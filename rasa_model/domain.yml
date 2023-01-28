@@ -41,7 +41,7 @@ responses:
   - text: "I am a bot, powered by Rasa."
 
   utter_professor_group:
-  - text: "{PERSON} may be with your mother"
+  - text: "{professor_name} may be with your mother"
 
 slots:
     professor_name:
@@ -49,11 +49,11 @@ slots:
       mappings:
       - type: from_entity
         entity: professor_name
-    PROFESOR:
+    PERSON:
       type: text
       mappings:
       - type: from_entity
-        entity: PROFESOR
+        entity: PERSON
     
 
 session_config:

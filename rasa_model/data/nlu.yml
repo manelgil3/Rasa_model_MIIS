@@ -103,8 +103,14 @@ nlu:
 - intent: ask_professor_group
   examples: |
     - Which group does professor [Jorge Lobo](professor_name) belong to?
+    - Which group does professor [Marco Jerome](professor_name) belong to?
+    - Which group does professor [Pablo Aragon](professor_name) belong to?
     - Professor [Jorge Lobo](professor_name)'s group
+    - Professor [Marco Jerome](professor_name)'s group
+    - Professor [Pablo Aragon](professor_name)'s group
     - [Jorge Lobo](professor_name) group
+    - [Marco Jerome](professor_name) group
+    - [Pablo Aragon](professor_name) group
 
 - intent: ask_group_professors
   examples: |
