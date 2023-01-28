@@ -16,6 +16,12 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+    - Hey there Sara(name)
+
+- intent: faq/language
+  examples: |
+    - What language do you speak?
+    - Do you only handle english?    
 
 - intent: goodbye
   examples: |
@@ -93,3 +99,21 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
     - what are you?
+
+- intent: ask_professor_group
+  examples: |
+    - Which group does professor [Jorge Lobo](professor_name) belong to?
+    - Professor [Jorge Lobo](professor_name)'s group
+    - [Jorge Lobo](professor_name) group
+
+- intent: ask_group_professors
+  examples: |
+    - Which teachers belong to group [AI&ML: Artificial Intelligence and Machine Learning group](group_name)?
+    - Group [AI&ML: Artificial Intelligence and Machine Learning group](group_name) teachers
+
+- intent: ask_professor_office
+  examples: |
+    - Which is Professor [Jorge Lobo](professor_name)'s office?
+    - Where can I find Professor [Jorge Lobo](professor_name)?
+    - Where is Professor [Jorge Lobo](professor_name)?
+    - Office of [Jorge Lobo](professor_name)
