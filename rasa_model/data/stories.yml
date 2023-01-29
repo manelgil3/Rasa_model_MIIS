@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.0"
 
 stories:
 
@@ -27,4 +27,14 @@ stories:
   - action: utter_cheer_up
   - action: utter_did_that_help
   - intent: deny
+  - action: utter_goodbye
+
+- story: professor path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor
+  - action: ActionReturnProfessor
+  - action: utter_did_that_help
+  - intent: affirm
   - action: utter_goodbye

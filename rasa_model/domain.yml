@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.0"
 
 intents:
   - greet
@@ -8,6 +8,11 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - ask_professor
+
+actions:
+- ActionReturnProfessor
+
 
 responses:
   utter_greet:

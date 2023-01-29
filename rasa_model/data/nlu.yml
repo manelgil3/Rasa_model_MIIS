@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.0"
 
 nlu:
 - intent: greet
@@ -16,6 +16,12 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+
+- intent: ask_professor
+  examples: |
+    - who is the professor?
+    - professor?
+    - who is a professor?
 
 - intent: goodbye
   examples: |
@@ -38,8 +44,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-    - ofc
-    - sure
 
 - intent: deny
   examples: |
@@ -50,7 +54,6 @@ nlu:
     - don't like that
     - no way
     - not really
-    - impossible
 
 - intent: mood_great
   examples: |
@@ -92,4 +95,3 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-    - what are you?
