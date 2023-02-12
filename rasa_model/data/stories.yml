@@ -38,3 +38,8 @@ stories:
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_goodbye
+
+- story: ask entity
+  steps:
+  - intent: search_professor
+  - action: ActionSearchProfessor
