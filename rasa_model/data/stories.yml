@@ -35,12 +35,6 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-<<<<<<< HEAD
-- story: ask proffesor group
-  steps:
-  - intent: ask_professor_group
-  - action: utter_professor_group
-=======
 - story: professor path
   steps:
   - intent: greet
@@ -54,5 +48,9 @@ stories:
 - story: ask entity
   steps:
   - intent: search_professor
-  - action: ActionSearchProfessor
->>>>>>> origin/intents_manel
+  - action: 
+  
+- story: ask proffesor group
+  steps:
+  - intent: ask_professor_group
+  - action: utter_professor_group
