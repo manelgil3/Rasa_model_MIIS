@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.0"
 
 nlu:
 - intent: greet
@@ -23,6 +23,44 @@ nlu:
     - What language do you speak?
     - Do you only handle english?    
 
+- intent: ask_professor
+  examples: |
+    - who is the professor?
+    - professor?
+    - who is a professor?
+
+- intent: search_professor
+  examples: |
+    - Which group does professor [Jorge Lobo](professor_name) belong to?
+    - Which group does professor [Marco Jerome](professor_name) belong to?
+    - Which group does professor [Pablo Aragon](professor_name) belong to?
+    - Professor [Jorge Lobo](professor_name)'s group
+    - Professor [Marco Jerome](professor_name)'s group
+    - Professor [Pablo Aragon](professor_name)'s group
+    - [Jorge Lobo](professor_name) group
+    - [Marco Jerome](professor_name) group
+    - [Pablo Aragon](professor_name) group
+
+
+- intent: ask_professor
+  examples: |
+    - who is the professor?
+    - professor?
+    - who is a professor?
+
+- intent: search_professor
+  examples: |
+    - Which group does professor [Jorge Lobo](professor_name) belong to?
+    - Which group does professor [Marco Jerome](professor_name) belong to?
+    - Which group does professor [Pablo Aragon](professor_name) belong to?
+    - Professor [Jorge Lobo](professor_name)'s group
+    - Professor [Marco Jerome](professor_name)'s group
+    - Professor [Pablo Aragon](professor_name)'s group
+    - [Jorge Lobo](professor_name) group
+    - [Marco Jerome](professor_name) group
+    - [Pablo Aragon](professor_name) group
+
+
 - intent: goodbye
   examples: |
     - cu
@@ -44,8 +82,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-    - ofc
-    - sure
 
 - intent: deny
   examples: |
@@ -56,7 +92,6 @@ nlu:
     - don't like that
     - no way
     - not really
-    - impossible
 
 - intent: mood_great
   examples: |
@@ -98,7 +133,6 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-    - what are you?
 
 - intent: ask_professor_group
   examples: |

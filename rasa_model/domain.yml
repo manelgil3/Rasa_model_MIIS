@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.0"
 
 intents:
   - greet
@@ -8,16 +8,19 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - ask_professor_group:
+  - ask_professor
+  - search_professor:
       use_entities:
         - professor_name
         - PERSON
 
+actions:
+  - ActionReturnProfessor
+  - ActionSearchProfessor
+
 entities:
-  - name
   - professor_name
-  - group_name
-  - office_number
+  - name
   - PERSON
 
 responses:
@@ -40,7 +43,7 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
-  utter_professor_group:
+  utter_ask_entity:
   - text: "{professor_name} may be with your mother"
 
 slots:
@@ -54,7 +57,6 @@ slots:
       mappings:
       - type: from_entity
         entity: PERSON
-    
 
 session_config:
   session_expiration_time: 60
