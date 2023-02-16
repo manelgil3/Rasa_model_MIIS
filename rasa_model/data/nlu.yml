@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3.1"
 
 nlu:
 - intent: greet
@@ -28,37 +28,6 @@ nlu:
     - who is the professor?
     - professor?
     - who is a professor?
-
-- intent: search_professor
-  examples: |
-    - Which group does professor [Jorge Lobo](professor_name) belong to?
-    - Which group does professor [Marco Jerome](professor_name) belong to?
-    - Which group does professor [Pablo Aragon](professor_name) belong to?
-    - Professor [Jorge Lobo](professor_name)'s group
-    - Professor [Marco Jerome](professor_name)'s group
-    - Professor [Pablo Aragon](professor_name)'s group
-    - [Jorge Lobo](professor_name) group
-    - [Marco Jerome](professor_name) group
-    - [Pablo Aragon](professor_name) group
-
-
-- intent: ask_professor
-  examples: |
-    - who is the professor?
-    - professor?
-    - who is a professor?
-
-- intent: search_professor
-  examples: |
-    - Which group does professor [Jorge Lobo](professor_name) belong to?
-    - Which group does professor [Marco Jerome](professor_name) belong to?
-    - Which group does professor [Pablo Aragon](professor_name) belong to?
-    - Professor [Jorge Lobo](professor_name)'s group
-    - Professor [Marco Jerome](professor_name)'s group
-    - Professor [Pablo Aragon](professor_name)'s group
-    - [Jorge Lobo](professor_name) group
-    - [Marco Jerome](professor_name) group
-    - [Pablo Aragon](professor_name) group
 
 
 - intent: goodbye
@@ -136,15 +105,15 @@ nlu:
 
 - intent: ask_professor_group
   examples: |
-    - Which group does professor [Jorge Lobo](professor_name) belong to?
-    - Which group does professor [Marco Jerome](professor_name) belong to?
-    - Which group does professor [Pablo Aragon](professor_name) belong to?
-    - Professor [Jorge Lobo](professor_name)'s group
-    - Professor [Marco Jerome](professor_name)'s group
-    - Professor [Pablo Aragon](professor_name)'s group
-    - [Jorge Lobo](professor_name) group
-    - [Marco Jerome](professor_name) group
-    - [Pablo Aragon](professor_name) group
+    - Which group does professor [Jorge Lobo](PERSON) belong to?
+    - Which group does professor [Marco Jerome](PERSON) belong to?
+    - Which group does professor [Pablo Aragon](PERSON) belong to?
+    - Professor [Jorge Lobo](PERSON)'s group
+    - Professor [Marco Jerome](PERSON)'s group
+    - Professor [Pablo Aragon](PERSON)'s group
+    - [Jorge Lobo](PERSON) group
+    - [Marco Jerome](PERSON) group
+    - [Pablo Aragon](PERSON) group
 
 - intent: ask_group_professors
   examples: |
@@ -153,7 +122,7 @@ nlu:
 
 - intent: ask_professor_office
   examples: |
-    - Which is Professor [Jorge Lobo](professor_name)'s office?
-    - Where can I find Professor [Jorge Lobo](professor_name)?
-    - Where is Professor [Jorge Lobo](professor_name)?
-    - Office of [Jorge Lobo](professor_name)
+    - Which is Professor [Jorge Lobo](PERSON)'s office?
+    - Where can I find Professor [Jorge Lobo](PERSON)?
+    - Where is Professor [Jorge Lobo](PERSON)?
+    - Office of [Jorge Lobo](PERSON)

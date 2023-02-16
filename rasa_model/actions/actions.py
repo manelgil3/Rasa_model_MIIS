@@ -11,28 +11,40 @@
 
 import csv
 import os
-from typing import Any, Text, Dict, List
+import pandas as pd
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
+from typing import Any, Text, Dict, List
 
-class ActionReturnProfessor(Action):
+
+class ActionReturnProfessorGroup(Action):
 
     def name(self) -> Text:
-        return "ActionReturnProfessor"
+        return "ActionReturnProfessorGroup"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        df = listadoDF()
+        professor_name = tracker.get_slot("professor_name").upper()
+        print(professor_name, "HOLA")
 
-        with open('listado.csv', mode='r', encoding='latin-1') as csv_file:
-            csv_reader = csv.DictReader(csv_file, delimiter=';')
-            for row in csv_reader:
-                if row['NOMBRE'] == "LOBO , JORGE":
-                    dispatcher.utter_message(text=row['GRUPO'])
-                    break
 
-        return []
+        for index, row in df.iterrows():
+            df_name = row['NOMBRE'].upper()
+            if "".join(df_name.split()) == "".join(professor_name.split()):
+                print("OK")
+                professor_group = row['GRUPO']
+                response = f"The professor {professor_name} belongs to {professor_group} ."
+                break
+            else:
+                response = "null"
+                professor_group = "null"
+
+        dispatcher.utter_message(response)
+        return [SlotSet("professor_group", professor_group)]
 
 
 
@@ -56,6 +68,33 @@ class ActionSearchProfessor(Action):
 
         dispatcher.utter_message(response)
         return [SlotSet("professor_name", professor_name)]
+    
 
 
+def parse_name(name):
 
+    """ Source: https://stackoverflow.com/questions/55840700/how-to-parse-a-name-that-is-a-string-in-lastname-firstname-format-into-a-list-i"""
+    lst = name.split(',') # this line will split the string into two words
+
+    lst.reverse() # this will reverse the list 
+    name = " ".join(lst)
+    return name
+
+def listadoDF():
+    """
+    Returns a pandas dataframe with listado.csv data parsed in 4 columns:
+    'NOMBRE' --> name of the professor with format NAME SURNAME(S)
+    'GRUPO' --> group where professor belongs
+    'DESPACHO' --> office number of the professor with format Integer
+    'EDIFICIO' --> building where office belongs with format Edifici La Nau
+    """
+    absolute_path = os.path.dirname(__file__)
+    relative_path = "../data/listado.csv"
+    full_path = os.path.join(absolute_path, relative_path)
+
+    df = pd.read_csv(full_path)
+    df.columns = ['NOMBRE', 'GRUPO', 'DESPACHO', 'EDIFICIO']
+    df = df.dropna(axis = 0, how = 'all')
+    df = df.reset_index(drop=True)
+    df['NOMBRE'] = df['NOMBRE'].apply(parse_name)
+    return df

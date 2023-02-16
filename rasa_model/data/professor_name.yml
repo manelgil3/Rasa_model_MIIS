@@ -1,6 +1,6 @@
-version: "2.0"
+version: "3.1"
 nlu:
-  - lookup: professor_name
+  - lookup: PERSON
     examples: |
       - JORGE LOBO
       - MARCO JEROME GASPARRINI

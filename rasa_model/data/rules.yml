@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3.1"
 
 rules:
 
@@ -12,7 +12,7 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Say professor group any time user ask it
-  steps:
-  - intent: ask_professor_group
-  - action: utter_professor_group
+#- rule: Say professor group any time user ask it
+#  steps:
+#  - intent: ask_professor_group
+#  - action: utter_professor_group

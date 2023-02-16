@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3.1"
 
 stories:
 
@@ -39,18 +39,13 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: ask_professor
-  - action: ActionReturnProfessor
+  - intent: ask_professor_group
+  - action: ActionReturnProfessorGroup
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_goodbye
 
-- story: ask entity
-  steps:
-  - intent: search_professor
-  - action: 
-  
-- story: ask proffesor group
-  steps:
-  - intent: ask_professor_group
-  - action: utter_professor_group
+# - story: ask proffesor group
+#   steps:
+#   - intent: ask_professor_group
+#   - action: utter_professor_group
