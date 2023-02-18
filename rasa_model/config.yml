@@ -6,10 +6,6 @@ recipe: default.v1
 # https://rasa.com/docs/rasa/nlu/components/
 language: en
 
-actions:
-  - ActionSearchProfessor
-  - ActionReturnProfessor
-
 
 pipeline:
 # # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
@@ -40,7 +36,7 @@ pipeline:
   - name: SpacyFeaturizer
     pooling: mean
   - name: SpacyEntityExtractor
-    dimensions: ["PERSON"]
+    dimensions: ["PERSON","ORG"]
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer

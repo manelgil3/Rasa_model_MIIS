@@ -8,20 +8,49 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - ask_professor
-  - search_professor:
+  - ask_chatgpt
+  - bad_words
+  - thanks_for_the_help
+  - ask_professor_office:
       use_entities:
         - professor_name
         - PERSON
+  - ask_professor_group:
+      use_entities:
+        - professor_name
+        - PERSON
+  - ask_professor_office_and_group:
+      use_entities:
+        - professor_name
+        - PERSON
+  - ask_professor_building:
+      use_entities:
+        - professor_name
+  - ask_professors_of_group:
+      use_entities:
+        - professor_group
+        - ORG
+  - ask_office_ocupation:
+      use_entities:
+        - professor_office
+
 
 actions:
-  - ActionReturnProfessor
-  - ActionSearchProfessor
+  - ActionReturnProfessorOffice
+  - ActionReturnProfessorGroup
+  - ActionReturnProfessorOfficeAndGroup
+  - ActionReturnProfessorBuilding
+  - ActionReturnProfessorsOfGroup
+  - ActionReturnOfficeOccupation
 
 entities:
   - professor_name
   - name
   - PERSON
+  - ORG
+  - group
+  - professor_group
+  - professor_office
 
 responses:
   utter_greet:
@@ -37,14 +66,23 @@ responses:
   utter_happy:
   - text: "Great, carry on!"
 
+  utter_help:
+  - text: "How can I help you?"
+
   utter_goodbye:
   - text: "Bye"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
-  utter_ask_entity:
-  - text: "{professor_name} may be with your mother"
+  utter_other_help:
+  - text: "Try to ask to my big bro: Chat GPT"
+
+  utter_be_polite:
+  - text: "I can sense that you're upset, but please remember that I'm here to help you. Let's work together to find a solution in a respectful manner."
+
+  utter_thanks_for_the_help:
+  - text: "You're welcome, do you need anything more?"
 
 slots:
     professor_name:
@@ -57,6 +95,16 @@ slots:
       mappings:
       - type: from_entity
         entity: PERSON
+    professor_group:
+      type: text
+      mappings:
+      - type: from_entity
+        entity: professor_group
+    professor_office:
+      type: text
+      mappings:
+      - type: from_entity
+        entity: professor_office
 
 session_config:
   session_expiration_time: 60

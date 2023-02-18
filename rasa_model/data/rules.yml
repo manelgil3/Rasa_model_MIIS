@@ -11,3 +11,8 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Say 'Please be polite, you shouldn't use this kind of bad words'
+  steps:
+  - intent: bad_words
+  - action: utter_be_polite

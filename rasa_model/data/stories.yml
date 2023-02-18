@@ -2,12 +2,53 @@ version: "3.0"
 
 stories:
 
+- story: ask office
+  steps:
+  - intent: ask_professor_office
+  - action: ActionReturnProfessorOffice
+
+- story: ask group
+  steps:
+  - intent: ask_professor_group
+  - action: ActionReturnProfessorGroup
+
+- story: ask office and group
+  steps:
+  - intent: ask_professor_office_and_group
+  - action: ActionReturnProfessorOfficeAndGroup
+
+- story: ask building
+  steps:
+  - intent: ask_professor_building
+  - action: ActionReturnProfessorBuilding
+
+- story: ask professors of group
+  steps:
+  - intent: ask_professors_of_group
+  - action: ActionReturnProfessorsOfGroup
+
+- story: ask office occupation
+  steps:
+  - intent: ask_office_ocupation
+  - action: ActionReturnOfficeOccupation
+
+- story: ask chat gpt
+  steps:
+  - intent: ask_chatgpt
+  - action: utter_other_help
+
+- story: thanks for the help
+  steps:
+  - intent: thanks_for_the_help
+  - action: utter_thanks_for_the_help
+
 - story: happy path
   steps:
   - intent: greet
   - action: utter_greet
   - intent: mood_great
   - action: utter_happy
+  - action: utter_help
 
 - story: sad path 1
   steps:
@@ -18,6 +59,7 @@ stories:
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy
+  - action: utter_help
 
 - story: sad path 2
   steps:
@@ -28,18 +70,3 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
-
-- story: professor path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_professor
-  - action: ActionReturnProfessor
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_goodbye
-
-- story: ask entity
-  steps:
-  - intent: search_professor
-  - action: ActionSearchProfessor

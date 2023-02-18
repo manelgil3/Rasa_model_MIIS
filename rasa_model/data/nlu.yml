@@ -17,14 +17,26 @@ nlu:
     - goodevening
     - good afternoon
 
-- intent: ask_professor
+- intent: ask_professor_office
   examples: |
-    - who is the professor?
-    - professor?
-    - who is a professor?
+    - I want to know the office of [Jorge Lobo](professor_name)
+    - I want to know the office of [Marco Jerome](professor_name)
+    - I want to know the office of [Pablo Aragon](professor_name)
+    - What is the office of professor [Jorge Lobo](professor_name)?
+    - What is the office of professor [Marco Jerome](professor_name)?
+    - What is the office of professor [Pablo Aragon](professor_name)?
+    - Professor [Jorge Lobo](professor_name)'s office
+    - Professor [Marco Jerome](professor_name)'s office
+    - Professor [Pablo Aragon](professor_name)'s office
+    - [Jorge Lobo](professor_name) office
+    - [Marco Jerome](professor_name) office
+    - [Pablo Aragon](professor_name) office
 
-- intent: search_professor
+- intent: ask_professor_group
   examples: |
+    - I want to know the group of [Jorge Lobo](professor_name)
+    - I want to know the group of [Marco Jerome](professor_name)
+    - I want to know the group of [Pablo Aragon](professor_name)
     - Which group does professor [Jorge Lobo](professor_name) belong to?
     - Which group does professor [Marco Jerome](professor_name) belong to?
     - Which group does professor [Pablo Aragon](professor_name) belong to?
@@ -35,11 +47,84 @@ nlu:
     - [Marco Jerome](professor_name) group
     - [Pablo Aragon](professor_name) group
 
+- intent: ask_professor_office_and_group
+  examples: |
+    - I want to know the office and group of [Jorge Lobo](professor_name)
+    - I want to know the office and group of [Marco Jerome](professor_name)
+    - I want to know the office and group of Pablo Aragon](professor_name)
+    - What is the office and the group of professor [Jorge Lobo](professor_name)?
+    - What is the office and the group of professor [Marco Jerome](professor_name)?
+    - What is the office and the group of professor Pablo Aragon](professor_name)?
+    - Professor [Jorge Lobo](professor_name)'s office and group
+    - Professor [Marco Jerome](professor_name)'s office and group
+    - Professor [Pablo Aragon](professor_name)'s office and group
+    - [Jorge Lobo](professor_name) office and group
+    - [Marco Jerome](professor_name) office and group
+    - [Pablo Aragon](professor_name) office and group
+
+- intent: ask_professor_building
+  examples: |
+    - I want to know the building of [Jorge Lobo](professor_name)
+    - I want to know the building of [Marco Jerome](professor_name)
+    - I want to know the building of [Pablo Aragon](professor_name)
+    - In which building does professor [Jorge Lobo](professor_name) work?
+    - In which building does professor [Marco Jerome](professor_name) work?
+    - In which building does professor [Pablo Aragon](professor_name) work?
+    - Professor [Jorge Lobo](professor_name)'s building
+    - Professor [Marco Jerome](professor_name)'s building
+    - Professor [Pablo Aragon](professor_name)'s building
+    - [Jorge Lobo](professor_name) building
+    - [Marco Jerome](professor_name) building
+    - [Pablo Aragon](professor_name) building
+
+- intent: ask_professors_of_group
+  examples: |
+    - What professors belong to group: [AI&ML: Artificial Intelligence and Machine Learning](professor_group)?
+    - What professors belong to group: [BERG Biomedical Electronics Research Group](professor_group)?
+    - What professors belong to group: [Computational Neuroscience](professor_group)?
+    - Proffesors in [AI&ML: Artificial Intelligence and Machine Learning](professor_group)?
+    - Proffesors in [BERG Biomedical Electronics Research Group](professor_group)?
+    - Proffesors in [Computational Neuroscience](professor_group)?
+
+- intent: ask_office_ocupation
+  examples: |
+    - Who is in office [55110](professor_office)?
+    - Who is in office [55130](professor_office)?
+    - Who is in office [55217](professor_office)?
+
+- intent: bad_words
+  examples: |
+    - fuck
+    - fuck you
+    - fuck u
+    - son of a bith
+    - dumb
+    - stupid
+    - bitch
+    - retarded
+
+- intent: ask_chatgpt
+  examples: |
+    - who can help me?
+    - i need more help
+    - do you know anyone else that could help me?
+
+- intent: thanks_for_the_help
+  examples: |
+    - thanks for the help
+    - thanks fot your help
+    - thank you
+    - thanks
+    - thank u
+    - thanks for solving my doubts
+    - thanks for your answers
+    - thanks dude
+    - thanks bro
 
 - intent: goodbye
   examples: |
     - cu
-    - good by
+    - good bye
     - cee you later
     - good night
     - bye
@@ -70,6 +155,7 @@ nlu:
 
 - intent: mood_great
   examples: |
+    - fine
     - perfect
     - great
     - amazing
