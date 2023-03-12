@@ -1,5 +1,7 @@
+from collections import Counter
 import os
 import pandas as pd
+import nltk
 
 def parse_name(name):
 
@@ -13,18 +15,78 @@ def parse_name(name):
 def listadoDF():
     """
     Returns a pandas dataframe with listado.csv data parsed in 4 columns:
-    'NOMBRE' --> name of the professor with format NAME SURNAME(S)
-    'GRUPO' --> group where professor belongs
-    'DESPACHO' --> office number of the professor with format Integer
-    'EDIFICIO' --> building where office belongs with format Edifici La Nau
+    'Name1' --> name of the professor with format NAME SURNAME(S)
+    'Group' --> Group where professor belongs
+    'Office' --> Office number of the professor with format Integer
+    'Building' --> Building where office belongs with format Edifici La Nau
     """
     absolute_path = os.path.dirname(__file__)
     relative_path = "../data/listado.csv"
     full_path = os.path.join(absolute_path, relative_path)
 
     df = pd.read_csv(full_path)
-    df.columns = ['NOMBRE', 'GRUPO', 'DESPACHO', 'EDIFICIO']
+    df.columns = ['fullname', 'Group', 'Office', 'Building']
     df = df.dropna(axis = 0, how = 'all')
     df = df.reset_index(drop=True)
-    df['NOMBRE'] = df['NOMBRE'].apply(parse_name)
+    df['fullname'] = df['fullname'].apply(parse_name)
+    df['fullname'] = df['fullname'].apply(remove_leading_space)
+    df = split_fullname(df)
+    df = df.dropna(axis = 0, how = 'all')
+    df = df.reset_index(drop=True)
     return df
+
+def remove_leading_space(s):
+    return s.lstrip()
+def remove_all_extra_spaces(string):
+    return " ".join(string.split())
+
+def split_fullname(df):
+    df['Name1'] = ""
+    df['Name2'] = ""
+    df['Surname1'] = ""
+    df['Surname2'] = ""
+    for index, row in df.iterrows():
+        name_length = len(row['fullname'].split())
+        if name_length == 4:
+            row[['Name1', 'Name2', 'Surname1', 'Surname2']] = row['fullname'].split()
+        elif name_length == 3:
+            row[['Name1', 'Surname1', 'Surname2']] = row['fullname'].split()
+        elif name_length == 2:
+            row[['Name1','Surname1']] = row['fullname'].split()
+    return df
+
+
+def detectProfessor(professor_name:str, listado:pd.DataFrame):
+    name = professor_name.split()
+    print(professor_name)
+    professors = []
+    for name_part in name:
+        for index, row in listado.iterrows():
+            name_splitted = [row['Name1'],row['Name2'],row['Surname1'],row['Surname2']]
+            if len("".join(name_splitted).replace(" ", ""))==0:continue
+            min_dist = min([nltk.edit_distance(name_part, x) for x in name_splitted])
+            professor = {
+                "fullname":remove_all_extra_spaces(" ".join(name_splitted)),
+                "dist": min_dist
+            }
+
+            if not professors:
+                professors.append(professor)
+            elif professors[0]['dist'] > min_dist:
+                professors.clear()
+                professors.append(professor)
+            elif professors[0]['dist'] == min_dist:
+                professors.append(professor)
+            elif professors[0]['dist'] < min_dist:
+                continue
+
+    # Get a Counter object of the professors in the list
+    counter = Counter(map(str, professors))
+    max_count = max(counter.values())
+    print(counter)
+    print(max_count)
+    if max_count == 1:
+        return professors
+    else:
+        professors = [dict(eval(key)) for key, count in counter.items() if count == max_count]
+        return professors

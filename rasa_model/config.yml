@@ -9,6 +9,7 @@ language: en
 actions:
   - ActionSearchProfessor
   - ActionReturnProfessorGroup
+  - action_select_option
 
 
 pipeline:

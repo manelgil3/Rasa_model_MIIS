@@ -12,6 +12,23 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- rule: Activate Option Form
+  condition:
+  - slot_was_set:
+    - waiting_for_user_input: true
+  steps:
+  - active_loop: option_form
+
+- rule: Submit Form
+  condition:
+  - active_loop: option_form
+  steps:
+  - action: option_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: ActionReturnProfessorGroup
+
 #- rule: Say professor group any time user ask it
 #  steps:
 #  - intent: ask_professor_group
