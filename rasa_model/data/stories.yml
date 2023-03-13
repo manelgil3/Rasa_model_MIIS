@@ -35,17 +35,59 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: professor path
+# - story: professor path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: ask_professor_group
+#   - action: ActionReturnProfessorGroup
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_goodbye
+
+- story: select professor path
   steps:
   - intent: greet
   - action: utter_greet
   - intent: ask_professor_group
   - action: ActionReturnProfessorGroup
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorGroup
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_goodbye
 
-# - story: ask proffesor group
-#   steps:
-#   - intent: ask_professor_group
-#   - action: utter_professor_group
+
+
+- story: Ask for professor group
+  steps:
+  - intent: ask_professor_group
+  - action: ActionReturnProfessorGroup
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorGroup
+  - action: utter_did_that_help
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor_group
+  - action: ActionReturnProfessorGroup
+  - slot_was_set:
+    - waiting_for_user_input: true
+  - action: ActionSelectProfessor
+  - intent: inform
+    entities:
+    - selected_professor
+  - slot_was_set:
+    - selected_professor:
+  - action: ActionReturnProfessorGroup
+  - slot_was_set:
+    - waiting_for_user_input: false
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye

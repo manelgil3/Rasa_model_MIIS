@@ -9,6 +9,8 @@ intents:
   - mood_unhappy
   - bot_challenge
   - ask_professor
+  - select_professor
+  - inform
   - ask_professor_group:
       use_entities:
         - professor_name
@@ -17,14 +19,16 @@ intents:
 actions:
   - ActionReturnProfessorGroup
   - ActionSearchProfessor
-  - ActionSelectOption
+  - ActionSelectProfessor
+  - action_set_slot
+  #- validate_option_form
 
 entities:
   - professor_name
   - name
   - PERSON
   - professor_group
-  - selected_option
+  - selected_professor
 
 responses:
   utter_greet:
@@ -53,6 +57,11 @@ responses:
   - text: "Did you mean {professor_name}?"
 
 slots:
+    selected_professor:
+      type: text
+      mappings:
+      - type: from_entity
+        entity: selected_professor
     professor_name:
       type: text
       mappings:
@@ -68,23 +77,20 @@ slots:
       mappings:
       - type: from_entity
         entity: professor_group
-    selected_option:
-      type: text
-      mappings:
-        - type: from_entity
-          entity: selected_option
-          conditions:
-          - active_loop: option_form
     waiting_for_user_input:
       type: bool
       mappings:
       - type: custom
+    professors:
+      type: any
+      mappings:
+      - type: custom
 
 
-forms:
-  option_form:
-    required_slots:
-    - selected_option
+# forms:
+#   option_form:
+#     required_slots:
+#     - selected_option
 
 session_config:
   session_expiration_time: 60

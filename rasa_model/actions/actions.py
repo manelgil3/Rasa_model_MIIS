@@ -14,7 +14,7 @@ import nltk
 import os
 import pandas as pd
 from typing import Dict, Text, Any, List, Union
-from rasa_sdk import Action, Tracker
+from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction
 from typing import Any, Text, Dict, List
@@ -31,32 +31,9 @@ class ActionReturnProfessorGroup(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-
-        # check if the selected option slot is set
-        selected_option = tracker.get_slot("selected_option")
-        if selected_option is not None:
-            # continue with custom action logic
-            dispatcher.utter_message("You selected: {}".format(selected_option))
-            # clear the slot value for the selected option
-            return [SlotSet("selected_option", None), SlotSet("waiting_for_user_input", False)]
-        
-        # Get entities from user input
-        entities = tracker.latest_message.get('entities')
-        if not entities:
-            response = "No professor name detected. Please try to repeat the question."
-            dispatcher.utter_message(response)
-            return
-        else:
-            professor_name = tracker.get_slot("professor_name").upper()
-            for entity in entities:
-                if ((entity['entity'] == 'PERSON') and (entity['extractor']=='SpacyEntityExtractor')):
-                    professor_name = entity['value'].upper()
-        
-
-        professors = utils.detectProfessor(professor_name, listado)
-        print("professors")
-        print(professors)
+                
+        professors = utils.get_professor_from_entity(dispatcher, tracker, listado)
+        if not professors: return
 
         if len(professors)==1:
             professor_name = professors[0]['fullname']
@@ -66,7 +43,6 @@ class ActionReturnProfessorGroup(Action):
 
                 listado_fullname = utils.remove_all_extra_spaces(row['fullname'].upper())
                 if "".join(listado_fullname.split()) == "".join(professor_name.split()):
-                    print("OK")
                     professor_group = row['Group']
                     response = f"The professor {professor_name} belongs to {professor_group} ."
                     break
@@ -75,32 +51,16 @@ class ActionReturnProfessorGroup(Action):
                     professor_group = "null"
 
             dispatcher.utter_message(response)
-            return [SlotSet("professor_group", professor_group). SlotSet("waiting_for_user_input", False)]
-
+            return [
+                SlotSet("professor_group", professor_group), 
+                SlotSet("waiting_for_user_input", False),
+                SlotSet("PERSON", professor_name),
+                SlotSet("professor_name", professor_name),
+                # SlotSet('professors', None)
+                SlotSet('selected_professor', None)
+            ]
         else:
-            response = "I found {} possible professors. Which one are you asking for?".format(len(professors))
-            dispatcher.utter_message(response)
-            for idx, x in enumerate(professors):
-                response = "[{}]{}".format(idx, x['fullname'])
-                dispatcher.utter_message(response)
-                # set a slot to wait for the user's response
-            return [SlotSet("waiting_for_user_input", True), FollowupAction("option_form")]
-
-            # # create button templates for each option
-            # buttons = []
-            # for x in professors:
-            #     payload = "/select_option{\"option\": \"" + x['fullname'] + "\"}"
-            #     buttons.append({"title": x['fullname'], "payload": payload})
-
-            # # send a message with the button templates
-            # dispatcher.utter_message(response=buttons)
-
-
-            
-        
-    
-    # def events_for_user(self) -> List[EventType]:
-    #     return [SlotSet("waiting_for_user_input", False)]
+            return [SlotSet("waiting_for_user_input", True),SlotSet('professors', professors), FollowupAction("ActionSelectProfessor")]
 
 
 class ActionSearchProfessor(Action):
@@ -128,18 +88,32 @@ class ActionSearchProfessor(Action):
 class ActionSelectOption(Action):
 
     def name(self) -> Text:
-        return "action_ask_option"
+        return "ActionSelectProfessor"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
+        professors = tracker.get_slot('professors')
+        
         dispatcher.utter_message(
-            text=
+            text="I've found {} possible professors. Which one are you asking for?".format(len(professors)),
+            buttons=[{"title":p['fullname'], "payload":'/inform{{"selected_professor":"{}"}}'.format(p['fullname'])} for p in professors]
         )
-
-        option = tracker.get_slot("option")
-
-        # set the slot value for the selected option
-        return [SlotSet("selected_option", option)]
+        return []
+    
+# class ValidateOptionForm(FormValidationAction):
+#     def name(self) -> Text:
+#         return "validate_option_form"
+    
+#     def validate_selected_option(
+#             self,
+#             slot_value: Any,
+#             dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+#         select_option = tracker.latest_message.get('text')
+        
+#         return [SlotSet('selected_option', select_option), FollowupAction("ActionReturnProfessorGroup")]
     

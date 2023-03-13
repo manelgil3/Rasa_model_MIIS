@@ -1,5 +1,4 @@
 version: "3.1"
-
 nlu:
 - intent: greet
   examples: |
@@ -17,19 +16,15 @@ nlu:
     - goodevening
     - good afternoon
     - Hey there Sara(name)
-
 - intent: faq/language
   examples: |
     - What language do you speak?
-    - Do you only handle english?    
-
+    - Do you only handle english?
 - intent: ask_professor
   examples: |
     - who is the professor?
     - professor?
     - who is a professor?
-
-
 - intent: goodbye
   examples: |
     - cu
@@ -42,7 +37,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -51,7 +45,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -61,7 +54,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -78,7 +70,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -95,14 +86,12 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: ask_professor_group
   examples: |
     - Which group does professor [Jorge Lobo](PERSON) belong to?
@@ -114,12 +103,11 @@ nlu:
     - [Jorge Lobo](PERSON) group
     - [Marco Jerome](PERSON) group
     - [Pablo Aragon](PERSON) group
-
+    - [garcia](PERSON) group?
 - intent: ask_group_professors
   examples: |
     - Which teachers belong to group [AI&ML: Artificial Intelligence and Machine Learning group](group_name)?
     - Group [AI&ML: Artificial Intelligence and Machine Learning group](group_name) teachers
-
 - intent: ask_professor_office
   examples: |
     - Which is Professor [Jorge Lobo](PERSON)'s office?

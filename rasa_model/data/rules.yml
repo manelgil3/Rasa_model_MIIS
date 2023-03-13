@@ -12,22 +12,51 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Activate Option Form
+# - rule: Select professor option
+#   condition:
+#   - slot_was_set:
+#     - waiting_for_user_input: true
+#   steps:
+#   - action: ActionSelectProfessor
+#   - action: action_listen
+
+
+
+
+- rule: Only Select professor if waiting user to input
   condition:
   - slot_was_set:
     - waiting_for_user_input: true
   steps:
-  - active_loop: option_form
+  - action: ActionSelectProfessor
+  - action: action_listen
 
-- rule: Submit Form
+- rule: Only Select professor if waiting user to input
   condition:
-  - active_loop: option_form
-  steps:
-  - action: option_form
-  - active_loop: null
   - slot_was_set:
-    - requested_slot: null
+    - waiting_for_user_input: false
+  steps:
   - action: ActionReturnProfessorGroup
+  - action: utter_did_that_help
+
+
+
+# - rule: Activate Option Form
+#   condition:
+#   - slot_was_set:
+#     - waiting_for_user_input: true
+#   steps:
+#   - active_loop: option_form
+
+# - rule: Submit Form
+#   condition:
+#   - active_loop: option_form
+#   steps:
+#   - action: option_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: validate_option_form
 
 #- rule: Say professor group any time user ask it
 #  steps:

@@ -1,6 +1,9 @@
 from collections import Counter
 import os
 import pandas as pd
+from rasa_sdk import Action, Tracker, FormValidationAction
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet, FollowupAction
 import nltk
 
 def parse_name(name):
@@ -58,7 +61,7 @@ def split_fullname(df):
 
 def detectProfessor(professor_name:str, listado:pd.DataFrame):
     name = professor_name.split()
-    print(professor_name)
+    print("detecting professor for name --> " + professor_name)
     professors = []
     for name_part in name:
         for index, row in listado.iterrows():
@@ -84,9 +87,28 @@ def detectProfessor(professor_name:str, listado:pd.DataFrame):
     counter = Counter(map(str, professors))
     max_count = max(counter.values())
     print(counter)
-    print(max_count)
     if max_count == 1:
         return professors
     else:
         professors = [dict(eval(key)) for key, count in counter.items() if count == max_count]
+        return professors
+    
+def get_professor_from_entity(dispatcher:CollectingDispatcher, tracker: Tracker, listado:pd.DataFrame):
+    # Get entities from user input
+        entities = tracker.latest_message.get('entities')
+        print(entities)
+        if not entities:
+            response = "No professor name detected. Please try to repeat the question. Remember names go with capital letters."
+            dispatcher.utter_message(response)
+            return []
+        else:
+            professor_name = tracker.get_slot("professor_name").upper()
+            selected_professor = tracker.get_slot("selected_professor")
+            for entity in entities:
+                if ((entity['entity'] == 'PERSON') and (entity['extractor']=='SpacyEntityExtractor')):
+                    professor_name = entity['value'].upper()
+            if selected_professor is not None:
+                professor_name = selected_professor.upper()
+        
+        professors = detectProfessor(professor_name, listado)
         return professors
