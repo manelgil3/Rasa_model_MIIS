@@ -33,6 +33,9 @@ def listadoDF():
     df = df.reset_index(drop=True)
     df['fullname'] = df['fullname'].apply(parse_name)
     df['fullname'] = df['fullname'].apply(remove_leading_space)
+    df['Group'] = df['Group'].apply(remove_all_extra_spaces)
+    df['Group'] = df['Group'].apply(remove_leading_space)
+    df['Group'] = df['Group'].apply(str.upper)
     df = split_fullname(df)
     df = df.dropna(axis = 0, how = 'all')
     df = df.reset_index(drop=True)
@@ -113,11 +116,43 @@ def get_professor_from_entity(dispatcher:CollectingDispatcher, tracker: Tracker,
         professors = detectProfessor(professor_name, listado)
         return professors
 
+
+def detectGroup(group_name:str, listado:pd.DataFrame):
+    listado = listado.drop_duplicates(subset='Group')
+    group_input = "".join(group_name.split())
+    print("detecting group for name --> " + group_name)
+    groups = []
+    for index, row in listado.iterrows():
+        group_df = "".join(row['Group'].split())
+        if len("".join(group_df).replace(" ", ""))==0:continue
+        dist = nltk.edit_distance(group_input, group_df)
+        #dist2 = nltk.jaccard_distance(group_input, group_df)
+        #dist3 = nltk.masi_distance(group_input, group_df)
+        #dist4 = nltk.metrics.distance.(group_input, group_df)
+        group_dict = {
+            "name":row['Group'],
+            "dist": dist,
+            #"dist2": dist2,
+            #"dist3": dist3,
+            #"dist4": dist4,
+        }
+        if not groups:
+            groups.append(group_dict)
+        elif groups[0]['dist'] > dist:
+            groups.clear()
+            groups.append(group_dict)
+        elif groups[0]['dist'] == dist:
+            groups.append(group_dict)
+        elif groups[0]['dist'] < dist:
+            continue
+    print(groups)
+    return groups
+
 def get_group_from_entity(dispatcher:CollectingDispatcher, tracker: Tracker, listado:pd.DataFrame):
     entities = tracker.latest_message.get('entities')
     print(entities)
     if not entities:
-        response = "No group name detected. Please try to repeat the question. Try to write the name the similar as posible"
+        response = "No group name detected. Please try to repeat the question. Try to be accurate when writing the name of the group."
         dispatcher.utter_message(response)
         return []
     else:

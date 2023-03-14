@@ -12,10 +12,10 @@ def parse_name(name):
     name = " ".join(lst)
     return name
 
-def main():
-    entity = "professor_name"
+def professors():
+    entity = "PERSON"
 
-    text  = 'version: "2.0"\n'
+    text  = 'version: "3.1"\n'
     text += 'nlu:\n'
     text += '  - lookup: {}\n'.format(entity)
     text += '    examples: |\n'
@@ -35,6 +35,36 @@ def main():
 
     with open("rasa_model/data/" + entity + '.yml', 'w', encoding='utf-8') as f:
         f.write(text)
+
+def groups():
+    entity = "GROUP"
+
+    text  = 'version: "3.1"\n'
+    text += 'nlu:\n'
+    text += '  - lookup: {}\n'.format(entity)
+    text += '    examples: |\n'
+
+    file_path = "rasa_model/data/listado.csv"
+    df = pd.read_csv(file_path)
+    df.columns = df.columns.str.replace(' ', '')
+    df = df[df['NOMBRE'].notna()]
+    df = df.reset_index()  # make sure indexes pair with number of rows
+    df = df.drop_duplicates(subset='GRUPO')
+
+    for index, row in df.iterrows():
+        bad_chars = ['','\u008a'] # There is an invisible char here
+        regex     = '|'.join(bad_chars)
+        group_name = row['GRUPO'].replace("\n", "")
+        new_line  = re.sub(regex, '', group_name.strip())#.encode('utf-8').decode('utf-8')
+        text += '      - ' + new_line + '\n'
+
+    with open("rasa_model/data/" + entity + '.yml', 'w', encoding='utf-8') as f:
+        f.write(text)
+
+
+def main():
+    professors()
+    groups()
 
 if __name__ == "__main__":
     main()

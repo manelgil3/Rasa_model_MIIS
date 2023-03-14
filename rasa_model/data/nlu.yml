@@ -106,8 +106,47 @@ nlu:
     - [garcia](PERSON) group?
 - intent: ask_group_professors
   examples: |
-    - Which teachers belong to group [AI&ML: Artificial Intelligence and Machine Learning group](group_name)?
-    - Group [AI&ML: Artificial Intelligence and Machine Learning group](group_name) teachers
+    - Which teachers belong to group [AI&ML: Artificial Intelligence and Machine Learning group](GROUP)?
+    - Which teachers belong to group [Cognitive Media Technologies Group](GROUP)?
+    - Which teachers belong to group [Computational Neuroscience](GROUP)?
+    - Which teachers belong to group [IP4EC Image processing](GROUP)?
+    - Which teachers belong to group [Interactive Technologies Group](GROUP)?
+    - Which teachers belong to group [MTG: Music Technology Group](GROUP)?
+    - Group [AI&ML: Artificial Intelligence and Machine Learning group](GROUP) teachers
+    - Group [Cognitive Media Technologies Group](GROUP) teachers
+    - Group [Computational Neuroscience](GROUP) teachers
+    - Group [IP4EC Image processing](GROUP) teachers
+    - Group [Interactive Technologies Group](GROUP) teachers
+    - Group [MTG: Music Technology Group](GROUP) teachers
+    - Who pertain to group [AI&ML: Artificial Intelligence and Machine Learning group](GROUP)
+    - Who pertain to group [Cognitive Media Technologies Group](GROUP)
+    - Who pertain to group [Computational Neuroscience](GROUP)
+    - Who pertain to group [IP4EC Image processing](GROUP)
+    - Who pertain to group [Interactive Technologies Group](GROUP)
+    - Who pertain to group [MTG: Music Technology Group](GROUP)
+    - Who pertain to [AI&ML: Artificial Intelligence and Machine Learning group](GROUP) group?
+    - Who pertain to [Cognitive Media Technologies Group](GROUP) group?
+    - Who pertain to [Computational Neuroscience](GROUP) group?
+    - Who pertain to [IP4EC Image processing](GROUP) group?
+    - Who pertain to [Interactive Technologies Group](GROUP) group?
+    - Who pertain to [MTG: Music Technology Group](GROUP) group?
+    - Professors of [AI&ML: Artificial Intelligence and Machine Learning group](GROUP) group
+    - Professors of [Cognitive Media Technologies Group](GROUP) group
+    - Professors of [Computational Neuroscience](GROUP) group
+    - Professors of [IP4EC Image processing](GROUP) group
+    - Professors of [Interactive Technologies Group](GROUP) group
+    - Professors of [MTG: Music Technology Group](GROUP) group
+    - Professors from the group [AI&ML: Artificial Intelligence and Machine Learning group](GROUP)
+    - Professors from the group [Cognitive Media Technologies Group](GROUP)
+    - Professors from the group [Computational Neuroscience](GROUP)
+    - Professors from the group [IP4EC Image processing](GROUP)
+    - Professors from the group [Interactive Technologies Group](GROUP)
+    - Professors from the group [MTG: Music Technology Group](GROUP)
+    - Who belongs to [AI&ML: Artificial Intelligence and Machine Learning group](GROUP)?
+    - Who belongs to [Cognitive Media Technologies Group](GROUP)?
+    - Who belongs to [Computational Neuroscience](GROUP)?
+    - Who belongs to [IP4EC Image processing](GROUP)?
+    - Who belongs to [Interactive Technologies Group](GROUP)?
 - intent: ask_professor_office
   examples: |
     - Which is Professor [Jorge Lobo](PERSON)'s office?

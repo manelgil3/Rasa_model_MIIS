@@ -10,6 +10,7 @@ actions:
   - ActionReturnProfessorGroup
   - ActionSelectProfessor
   - ActionReturnGroupProfessors
+  - ActionSelectGroup
 
 
 pipeline:

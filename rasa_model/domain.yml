@@ -14,11 +14,16 @@ intents:
       use_entities:
         - professor_name
         - PERSON
+  - ask_group_professors:
+      use_entities:
+        - group_name
+        - GROUP
 
 actions:
   - ActionReturnProfessorGroup
   - ActionReturnGroupProfessors
   - ActionSelectProfessor
+  - ActionSelectGroup
   - action_set_slot
   #- validate_option_form
 
@@ -30,6 +35,8 @@ entities:
   - selected_professor
   - selected_group
   - GROUP
+  - groups
+  - group_name
 
 responses:
   utter_greet:
@@ -73,6 +80,11 @@ slots:
       mappings:
       - type: from_entity
         entity: PERSON
+    group_name:
+      type: text
+      mappings:
+      - type: from_entity
+        entity: GROUP
     PERSON:
       type: text
       mappings:
@@ -92,7 +104,15 @@ slots:
       type: bool
       mappings:
       - type: custom
+    waiting_for_user_input_group:
+      type: bool
+      mappings:
+      - type: custom
     professors:
+      type: any
+      mappings:
+      - type: custom
+    groups:
       type: any
       mappings:
       - type: custom

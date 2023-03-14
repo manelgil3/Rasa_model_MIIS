@@ -45,7 +45,7 @@ stories:
 #   - intent: affirm
 #   - action: utter_goodbye
 
-- story: select professor path
+- story: Ask for professor's Group path
   steps:
   - intent: greet
   - action: utter_greet
@@ -59,8 +59,6 @@ stories:
   - intent: affirm
   - action: utter_goodbye
 
-
-
 - story: Ask for professor group
   steps:
   - intent: ask_professor_group
@@ -69,6 +67,30 @@ stories:
   - action: action_listen
   - intent: inform
   - action: ActionReturnProfessorGroup
+  - action: utter_did_that_help
+
+- story: Ask for professors in a particular Group path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_group_professors
+  - action: ActionReturnGroupProfessors
+  - action: ActionSelectGroup
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnGroupProfessors
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: Ask for professors in a group
+  steps:
+  - intent: ask_group_professors
+  - action: ActionReturnGroupProfessors
+  - action: ActionSelectGroup
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnGroupProfessors
   - action: utter_did_that_help
 
 - story: interactive_story_1
