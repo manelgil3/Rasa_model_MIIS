@@ -1,0 +1,3 @@
+[submodule "rasa_model/rasa_model/Chatbot-Widget"]
+	path = rasa_model/rasa_model/Chatbot-Widget
+	url = https://github.com/JiteshGaikwad/Chatbot-Widget/
