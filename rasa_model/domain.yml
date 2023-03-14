@@ -9,7 +9,6 @@ intents:
   - mood_unhappy
   - bot_challenge
   - ask_professor
-  - select_professor
   - inform
   - ask_professor_group:
       use_entities:
@@ -18,7 +17,7 @@ intents:
 
 actions:
   - ActionReturnProfessorGroup
-  - ActionSearchProfessor
+  - ActionReturnGroupProfessors
   - ActionSelectProfessor
   - action_set_slot
   #- validate_option_form
@@ -29,6 +28,8 @@ entities:
   - PERSON
   - professor_group
   - selected_professor
+  - selected_group
+  - GROUP
 
 responses:
   utter_greet:
@@ -62,6 +63,11 @@ slots:
       mappings:
       - type: from_entity
         entity: selected_professor
+    selected_group:
+      type: text
+      mappings:
+      - type: from_entity
+        entity: selected_group
     professor_name:
       type: text
       mappings:
@@ -72,6 +78,11 @@ slots:
       mappings:
       - type: from_entity
         entity: PERSON
+    GROUP:
+      type: text
+      mappings:
+      - type: from_entity
+        entity: GROUP
     professor_group:
       type: text
       mappings:

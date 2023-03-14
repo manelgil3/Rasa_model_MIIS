@@ -7,9 +7,9 @@ recipe: default.v1
 language: en
 
 actions:
-  - ActionSearchProfessor
   - ActionReturnProfessorGroup
   - ActionSelectProfessor
+  - ActionReturnGroupProfessors
 
 
 pipeline:
@@ -41,7 +41,7 @@ pipeline:
   - name: SpacyFeaturizer
     pooling: mean
   - name: SpacyEntityExtractor
-    dimensions: ["PERSON"]
+    dimensions: ["PERSON", "GROUP"]
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer

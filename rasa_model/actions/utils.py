@@ -112,3 +112,22 @@ def get_professor_from_entity(dispatcher:CollectingDispatcher, tracker: Tracker,
         
         professors = detectProfessor(professor_name, listado)
         return professors
+
+def get_group_from_entity(dispatcher:CollectingDispatcher, tracker: Tracker, listado:pd.DataFrame):
+    entities = tracker.latest_message.get('entities')
+    print(entities)
+    if not entities:
+        response = "No group name detected. Please try to repeat the question. Try to write the name the similar as posible"
+        dispatcher.utter_message(response)
+        return []
+    else:
+        group_name = tracker.get_slot("group_name").upper()
+        selected_group = tracker.get_slot("selected_group")
+        for entity in entities:
+            if ((entity['entity'] == 'GROUP') and (entity['extractor']=='SpacyEntityExtractor')):
+                group_name = entity['value'].upper()
+        if selected_group is not None:
+            group_name = selected_group.upper()
+        
+    groups = detectGroup(group_name, listado)
+    return groups

@@ -22,6 +22,7 @@ import utils
 
 listado = utils.listadoDF()
 professors = []
+groups = []
 
 class ActionReturnProfessorGroup(Action):
 
@@ -63,11 +64,51 @@ class ActionReturnProfessorGroup(Action):
             return [SlotSet("waiting_for_user_input", True),SlotSet('professors', professors), FollowupAction("ActionSelectProfessor")]
 
 
-class ActionSearchProfessor(Action):
+class ActionReturnGroupProfessors(Action):
     def name(self):
-        return "ActionSearchProfessor"
+        return "ActionReturnGroupProfessors"
 
-    def run(self, dispatcher, tracker, domain):
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+
+        groups = utils.get_group_from_entity(dispatcher, tracker, listado)
+        if not groups: return
+
+        if len(groups)==1:
+            group_name = groups[0]['fullname']
+
+            # Generate response and slot
+            for index, row in listado.iterrows():
+
+                listado_fullname = utils.remove_all_extra_spaces(row['fullname'].upper())
+                if "".join(listado_fullname.split()) == "".join(professor_name.split()):
+                    professor_group = row['Group']
+                    response = f"The professor {professor_name} belongs to {professor_group} ."
+                    break
+                else:
+                    response = "null"
+                    professor_group = "null"
+
+            dispatcher.utter_message(response)
+            return [
+                SlotSet("professor_group", professor_group), 
+                SlotSet("waiting_for_user_input", False),
+                SlotSet("PERSON", professor_name),
+                SlotSet("professor_name", professor_name),
+                # SlotSet('professors', None)
+                SlotSet('selected_professor', None)
+            ]
+        else:
+            return [SlotSet("waiting_for_user_input", True),SlotSet('professors', professors), FollowupAction("ActionSelectProfessor")]
+        
+
+
+        
+
+
+
         professor_name = tracker.get_slot("professor_name")
         if professor_name:
             with open('listado.csv', mode='r', encoding='latin-1') as f:
