@@ -10,6 +10,10 @@ intents:
   - bot_challenge
   - ask_professor
   - inform
+  - ask_professor_office:
+      use_entities:
+        - professor_name
+        - PERSON
   - ask_professor_group:
       use_entities:
         - professor_name
@@ -25,7 +29,7 @@ actions:
   - ActionSelectProfessor
   - ActionSelectGroup
   - action_set_slot
-  #- validate_option_form
+  - ActionReturnProfessorOffice
 
 entities:
   - professor_name
@@ -37,6 +41,7 @@ entities:
   - GROUP
   - groups
   - group_name
+  - professor_office
 
 responses:
   utter_greet:
@@ -85,6 +90,11 @@ slots:
       mappings:
       - type: from_entity
         entity: GROUP
+    professor_office:
+      type: text
+      mappings:
+      - type: from_entity
+        entity: professor_office
     PERSON:
       type: text
       mappings:
@@ -101,10 +111,6 @@ slots:
       - type: from_entity
         entity: professor_group
     waiting_for_user_input:
-      type: bool
-      mappings:
-      - type: custom
-    waiting_for_user_input_group:
       type: bool
       mappings:
       - type: custom

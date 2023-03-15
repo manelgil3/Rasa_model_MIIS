@@ -119,34 +119,47 @@ def get_professor_from_entity(dispatcher:CollectingDispatcher, tracker: Tracker,
 
 def detectGroup(group_name:str, listado:pd.DataFrame):
     listado = listado.drop_duplicates(subset='Group')
+    # Split multiple groups
+    listado_temp = pd.DataFrame(columns=['Group'])
+    for idx, row in listado.iterrows():
+        gn = [remove_leading_space(remove_all_extra_spaces(g)) for g in row['Group'].split("/")]
+        listado_temp = pd.concat([listado_temp, pd.DataFrame(gn, columns=['Group'])])
+    listado = listado_temp.drop_duplicates(subset='Group').reset_index(drop=True)
+    
+    group_input_split = group_name.split()
     group_input = "".join(group_name.split())
     print("detecting group for name --> " + group_name)
     groups = []
-    for index, row in listado.iterrows():
-        group_df = "".join(row['Group'].split())
-        if len("".join(group_df).replace(" ", ""))==0:continue
-        dist = nltk.edit_distance(group_input, group_df)
-        #dist2 = nltk.jaccard_distance(group_input, group_df)
-        #dist3 = nltk.masi_distance(group_input, group_df)
-        #dist4 = nltk.metrics.distance.(group_input, group_df)
-        group_dict = {
-            "name":row['Group'],
-            "dist": dist,
-            #"dist2": dist2,
-            #"dist3": dist3,
-            #"dist4": dist4,
-        }
-        if not groups:
-            groups.append(group_dict)
-        elif groups[0]['dist'] > dist:
-            groups.clear()
-            groups.append(group_dict)
-        elif groups[0]['dist'] == dist:
-            groups.append(group_dict)
-        elif groups[0]['dist'] < dist:
-            continue
-    print(groups)
-    return groups
+
+    for group_part in group_input_split:
+        for idx, row in listado.iterrows():
+            group_splitted = row['Group'].split()
+            if len("".join(group_splitted).replace(" ",""))==0:continue
+            min_dist = min([nltk.edit_distance(group_part, x) for x in group_splitted])
+            group = {
+                "name": row['Group'],
+                "dist": min_dist
+            }
+
+            if not groups:
+                groups.append(group)
+            elif groups[0]['dist'] > min_dist:
+                groups.clear()
+                groups.append(group)
+            elif groups[0]['dist'] == min_dist:
+                groups.append(group)
+            elif groups[0]['dist'] < min_dist:
+                continue
+
+    # Get a Counter object of the professors in the list
+    counter = Counter(map(str, groups))
+    max_count = max(counter.values())
+    print(counter)
+    if max_count == 1:
+        return groups
+    else:
+        groups = [dict(eval(key)) for key, count in counter.items() if count == max_count]
+        return groups
 
 def get_group_from_entity(dispatcher:CollectingDispatcher, tracker: Tracker, listado:pd.DataFrame):
     entities = tracker.latest_message.get('entities')

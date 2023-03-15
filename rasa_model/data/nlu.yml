@@ -150,6 +150,17 @@ nlu:
 - intent: ask_professor_office
   examples: |
     - Which is Professor [Jorge Lobo](PERSON)'s office?
+    - Which is the office of professor [Jorge Lobo](PERSON)? 
     - Where can I find Professor [Jorge Lobo](PERSON)?
     - Where is Professor [Jorge Lobo](PERSON)?
     - Office of [Jorge Lobo](PERSON)
+    - Which is Professor [Marco Jerome](PERSON)'s office?
+    - Which is the office of professor [Marco Jerome](PERSON)? 
+    - Where can I find Professor [Marco Jerome](PERSON)?
+    - Where is Professor [Marco Jerome](PERSON)?
+    - Office of [Marco Jerome](PERSON)
+    - Which is Professor [Pablo Aragon](PERSON)'s office?
+    - Which is the office of professor [Pablo Aragon](PERSON)? 
+    - Where can I find Professor [Pablo Aragon](PERSON)?
+    - Where is Professor [Pablo Aragon](PERSON)?
+    - Office of [Pablo Aragon](PERSON)

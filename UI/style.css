@@ -103,6 +103,10 @@ body {
   margin-bottom: 10px;
 }
 
+.msg-text {
+  white-space: pre-line;
+}
+
 .msg-info-name {
   margin-right: 10px;
   font-weight: bold;
@@ -216,6 +220,4 @@ button.inform-btn.clicked {
   cursor: not-allowed;
 }
 
-button.inform-btn.clicked:hover {
-  
-}
+button.inform-btn.clicked:hover {}

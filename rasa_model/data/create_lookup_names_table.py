@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 pd.options.mode.chained_assignment = None  # default='warn'
-
+from utils import remove_all_extra_spaces, remove_leading_space
 
 def parse_name(name):
 
@@ -50,6 +50,11 @@ def groups():
     df = df[df['NOMBRE'].notna()]
     df = df.reset_index()  # make sure indexes pair with number of rows
     df = df.drop_duplicates(subset='GRUPO')
+    df_temp = pd.DataFrame(columns=['GRUPO'])
+    for idx, row in df.iterrows():
+        gn = [remove_leading_space(remove_all_extra_spaces(g)) for g in row['GRUPO'].split("/")]
+        df_temp = pd.concat([df_temp, pd.DataFrame(gn, columns=['GRUPO'])])
+    df = df_temp.drop_duplicates(subset='GRUPO').reset_index(drop=True)
 
     for index, row in df.iterrows():
         bad_chars = ['','\u008a'] # There is an invisible char here

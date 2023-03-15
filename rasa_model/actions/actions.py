@@ -80,7 +80,7 @@ class ActionReturnGroupProfessors(Action):
         if len(groups)==1:
             group_name = groups[0]['name']
 
-            listado_filter = listado.loc[listado['Group'] == group_name]
+            listado_filter = listado[listado['Group'].str.contains(group_name)]
             listado_filter.index = np.arange(1, len(listado_filter) + 1)
             if listado_filter.empty:
                 response = "No group detected with name: {}".format(group_name)
@@ -92,9 +92,9 @@ class ActionReturnGroupProfessors(Action):
                 group_professors.append("[{}]{}\n".format(idx, professor_name))
 
             response = f"The group {group_name} has {len(listado_filter)} professors:\n"
-            dispatcher.utter_message(response)
             for p in group_professors:
-                dispatcher.utter_message(p)
+                response += p
+            dispatcher.utter_message(response)
             return [
                 SlotSet("professor_group", group_name), 
                 SlotSet("waiting_for_user_input", False),
@@ -106,11 +106,6 @@ class ActionReturnGroupProfessors(Action):
         else:
             return [SlotSet("waiting_for_user_input", True),SlotSet('groups', groups), FollowupAction("ActionSelectGroup")]
         
-
-
-        
-
-
 
         # professor_name = tracker.get_slot("professor_name")
         # if professor_name:
@@ -128,6 +123,46 @@ class ActionReturnGroupProfessors(Action):
         # dispatcher.utter_message(response)
         # return [SlotSet("professor_name", professor_name)]
     
+class ActionReturnProfessorOffice(Action):
+
+    def name(self) -> Text:
+        return "ActionReturnProfessorOffice"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+                
+        professors = utils.get_professor_from_entity(dispatcher, tracker, listado)
+        if not professors: return
+
+        if len(professors)==1:
+            professor_name = professors[0]['fullname']
+
+            # Generate response and slot
+            for index, row in listado.iterrows():
+
+                listado_fullname = utils.remove_all_extra_spaces(row['fullname'].upper())
+                if "".join(listado_fullname.split()) == "".join(professor_name.split()):
+                    professor_office = row['Office']
+                    response = f"Professor {professor_name}'s office is {professor_office} ."
+                    break
+                else:
+                    response = "null"
+                    professor_office = "null"
+
+            dispatcher.utter_message(response)
+            return [
+                SlotSet("professor_office", professor_office), 
+                SlotSet("waiting_for_user_input", False),
+                SlotSet("PERSON", professor_name),
+                SlotSet("professor_name", professor_name),
+                # SlotSet('professors', None)
+                SlotSet('selected_professor', None)
+            ]
+        else:
+            return [SlotSet("waiting_for_user_input", True),SlotSet('professors', professors), FollowupAction("ActionSelectProfessor")]
+
+
 
 class ActionSelectProfessor(Action):
 

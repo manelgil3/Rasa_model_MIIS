@@ -93,6 +93,30 @@ stories:
   - action: ActionReturnGroupProfessors
   - action: utter_did_that_help
 
+- story: Ask for professor office path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor_office
+  - action: ActionReturnProfessorOffice
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorOffice
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: Ask for professors in a group
+  steps:
+  - intent: ask_professor_office
+  - action: ActionReturnProfessorOffice
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorOffice
+  - action: utter_did_that_help
+
 - story: interactive_story_1
   steps:
   - intent: greet
