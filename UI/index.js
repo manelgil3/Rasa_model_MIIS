@@ -90,7 +90,7 @@ function botResponse(msgText) {
                         });
                         const payload = button.payload;
                         //Show the payload
-                        appendMessage(PERSON_NAME, PERSON_IMG, "right", payload)
+                        //appendMessage(PERSON_NAME, PERSON_IMG, "right", payload)
                         //Send a message to the bot with the payload
                         botResponse(payload);
                     };
