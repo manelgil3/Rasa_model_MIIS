@@ -144,6 +144,7 @@ class ActionReturnProfessorOffice(Action):
                 listado_fullname = utils.remove_all_extra_spaces(row['fullname'].upper())
                 if "".join(listado_fullname.split()) == "".join(professor_name.split()):
                     professor_office = row['Office']
+                    # TODO retornar tambe el edifici
                     response = f"Professor {professor_name}'s office is {professor_office} ."
                     break
                 else:
@@ -162,6 +163,8 @@ class ActionReturnProfessorOffice(Action):
         else:
             return [SlotSet("waiting_for_user_input", True),SlotSet('professors', professors), FollowupAction("ActionSelectProfessor")]
 
+# return email from profesor
+# 
 
 
 class ActionSelectProfessor(Action):

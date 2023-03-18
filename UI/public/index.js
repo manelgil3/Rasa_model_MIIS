@@ -6,13 +6,15 @@ const msgerChat = get(".msger-chat");
 const msgerAudioBtn = document.querySelector('.msger-audio-btn');
 const audioChunks = [];
 
+var userLang = 'ES';
+
 
 // Icons made by Freepik from www.flaticon.com
 //const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
-const BOT_IMG = "https://upload.wikimedia.org/wikipedia/commons/e/e4/Rasa_nlu_horizontal_purple.svg";
+const BOT_IMG = "https://www.upf.edu/documents/7283915/220614254/UPFt_rgb.png";
 //const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
-const PERSON_IMG = "https://www.upf.edu/documents/7283915/220614254/UPFt_rgb.png";
-const BOT_NAME = "BOT";
+const PERSON_IMG = "https://cdn-icons-png.flaticon.com/512/3237/3237472.png";
+const BOT_NAME = "EVA";
 const PERSON_NAME = "JIM";
 
 msgerForm.addEventListener("submit", async event => {
@@ -24,39 +26,22 @@ msgerForm.addEventListener("submit", async event => {
     appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
 
     const target_lang = 'en-GB';
+    // const response = await translateText(msgText, target_lang)
+    // console.log(response)
+    // const translatedMsg = await response.text;
+    // console.log(translatedMsg)
 
-    fetch('/translate', {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: `text=${encodeURIComponent(msgText)}&target_lang=${encodeURIComponent(target_lang)}`
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        const translatedMsg = data.text;
-        const detectedLang = data.detectedSourceLang;
-
-        console.log(translatedMsg);
-        console.log(detectedLang);
-
-        // Send user input to Rasa's endpoint and display response in chat
-        botResponse(translatedMsg);
-
-        // Do something with the translated text returned by the server
-    })
-    .catch(error => console.error(error));
-
-    //console.log(content);
-
+    translateText(msgText, target_lang)
+        .then(data => {
+            console.log(data);
+            const translatedMsg = data.text;
+            userLang = data.detectedSourceLang;
+            botResponse(translatedMsg);
+        })
 
     // Set msgerInput to null
     msgerInput.value = "";
-    
 
-    // Send user input to Rasa's endpoint and display response in chat
-    //botResponse(msgText);
 });
 
 function appendMessage(name, img, side, text) {
@@ -106,9 +91,16 @@ function botResponse(msgText) {
         .then(data => {
             console.log(data)
             // Display Rasa's response in the chat
-            const msgBot = data[0].text;
+            translateText(data[0].text, userLang)
+                .then(data => {
+                    console.log("Translated msg from rasa: ",data);
+                    const msgBot = data.text;
+                    appendMessage(BOT_NAME, BOT_IMG, "left", msgBot);
+
+                })
+            //const msgBot = data[0].text;
             const buttons = data[0].buttons;
-            appendMessage(BOT_NAME, BOT_IMG, "left", msgBot);
+            //appendMessage(BOT_NAME, BOT_IMG, "left", msgBot);
             // Generate buttons in the UI
             const buttonsContainer = document.createElement('div');
             if (buttons) {
@@ -148,4 +140,23 @@ function formatDate(date) {
     const m = "0" + date.getMinutes();
 
     return `${h.slice(-2)}:${m.slice(-2)}`;
+}
+
+function translateText(text, targetLang) {
+    return fetch('/translate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `text=${encodeURIComponent(text)}&target_lang=${encodeURIComponent(targetLang)}`
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Translated function: ", data)
+            return data;
+        })
+        .catch(error => {
+            console.error(error);
+            return 'An error occurred while translating the text.';
+        });
 }

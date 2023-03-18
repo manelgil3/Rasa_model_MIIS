@@ -105,13 +105,24 @@ def get_professor_from_entity(dispatcher:CollectingDispatcher, tracker: Tracker,
             dispatcher.utter_message(response)
             return []
         else:
-            professor_name = tracker.get_slot("professor_name").upper()
+            professor_name_from_slot = tracker.get_slot("professor_name").upper()
             selected_professor = tracker.get_slot("selected_professor")
+            professor_name_from_Spacy = None
+            professor_name_from_Regex = None
             for entity in entities:
                 if ((entity['entity'] == 'PERSON') and (entity['extractor']=='SpacyEntityExtractor')):
-                    professor_name = entity['value'].upper()
+                    professor_name_from_Spacy = entity['value'].upper()
+                if ((entity['entity'] == 'PERSON') and (entity['extractor']=='RegexEntityExtractor')):
+                    professor_name_from_Regex = entity['value'].upper()
+
             if selected_professor is not None:
                 professor_name = selected_professor.upper()
+            elif professor_name_from_Regex is not None:
+                professor_name = professor_name_from_Regex
+            elif professor_name_from_Spacy is not None:
+                professor_name = professor_name_from_Spacy
+            elif professor_name_from_slot is not None:
+                professor_name = professor_name_from_slot    
         
         professors = detectProfessor(professor_name, listado)
         return professors
