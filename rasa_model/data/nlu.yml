@@ -16,6 +16,7 @@ nlu:
     - goodevening
     - good afternoon
     - Hey there Sara(name)
+    - Hola
 - intent: faq/language
   examples: |
     - What language do you speak?
