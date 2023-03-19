@@ -1,6 +1,6 @@
-NOMBRE,GRUPO ,DESPACHO,
+NOMBRE,GRUPO ,DESPACHO,EDIFICIO,EMAIL
 ,,,
-"LOBO , JORGE",AI&ML: Artificial Intelligence and Machine Learning group,55110,
+"LOBO , JORGE",AI&ML: Artificial Intelligence and Machine Learning group,55110,,jorge.lobo@upf.edu
 "GASPARRINI , MARCO JEROME",AI&ML: Artificial Intelligence and Machine Learning group,55130,
 "GOMEZ CERDA, VICENTE",AI&ML: Artificial Intelligence and Machine Learning group,55130,
 "JONSSON , ANDERS",AI&ML: Artificial Intelligence and Machine Learning group,55130,

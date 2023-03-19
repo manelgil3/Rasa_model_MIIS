@@ -1,21 +1,17 @@
-//import { response } from "express";
-
 const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
 const msgerAudioBtn = document.querySelector('.msger-audio-btn');
-const audioChunks = [];
-
-var userLang = 'ES';
-
-
 // Icons made by Freepik from www.flaticon.com
-//const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
 const BOT_IMG = "https://www.upf.edu/documents/7283915/220614254/UPFt_rgb.png";
-//const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
 const PERSON_IMG = "https://cdn-icons-png.flaticon.com/512/3237/3237472.png";
 const BOT_NAME = "EVA";
 const PERSON_NAME = "JIM";
+
+var userLang = 'en-GB';
+
+botResponse("/greet") //init
+
 
 msgerForm.addEventListener("submit", async event => {
     event.preventDefault();
@@ -65,16 +61,6 @@ function appendMessage(name, img, side, text) {
     msgerChat.scrollTop += 500;
 }
 
-// function botResponse() {
-//     const r = random(0, BOT_MSGS.length - 1);
-//     const msgText = BOT_MSGS[r];
-//     const delay = msgText.split(" ").length * 100;
-
-//     setTimeout(() => {
-//         appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-//     }, delay);
-// }
-
 function botResponse(msgText) {
     // Send user input to Rasa's endpoint
     fetch('http://localhost:5005/webhooks/rest/webhook', {
@@ -100,6 +86,7 @@ function botResponse(msgText) {
                 })
             //const msgBot = data[0].text;
             const buttons = data[0].buttons;
+            const image = data[0].image;
             //appendMessage(BOT_NAME, BOT_IMG, "left", msgBot);
             // Generate buttons in the UI
             const buttonsContainer = document.createElement('div');
@@ -116,7 +103,7 @@ function botResponse(msgText) {
                         });
                         const payload = button.payload;
                         //Show the payload
-                        appendMessage(PERSON_NAME, PERSON_IMG, "right", payload)
+                        //appendMessage(PERSON_NAME, PERSON_IMG, "right", payload)
                         //Send a message to the bot with the payload
                         botResponse(payload);
                     };

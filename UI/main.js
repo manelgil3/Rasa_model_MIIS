@@ -12,7 +12,7 @@ const translator = new deepl.Translator(authKey, { serverUrl: serverUrl });
 // Body-parser used to expose data in POST requests
 var bodyparser = require('body-parser')
 // The data is 'urlencoded', so use that middleware
-var urlparser = bodyparser.urlencoded({extended: false})
+var urlparser = bodyparser.urlencoded({ extended: false })
 
 const port = 3000; // process.env['PORT']
 
@@ -23,18 +23,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Route that responds to GET requests with our html page
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + 'public/index.html');
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 // Route that responds to POST requests to '/user'
 app.post('/translate', urlparser, (req, res) => {
     // Syntax is req.body.[name], where [name] is the attribute we want data of.
     //res.send("<html>Hello, "+req.body.username+"!<html>")
-    
+
 
     // Handle the incoming POST request here
     const text = req.body.text;
-    const target_lang = req.body.target_lang;
+    var target_lang = req.body.target_lang;
+    if (target_lang == 'en') {
+        target_lang = 'en-GB'
+    } else if (target_lang == 'pt') {
+        target_lang = 'pt-PT'
+    }
     // You can now process the text and target_lang parameters and return a response
     // to the client using res.send()
 
@@ -67,10 +72,10 @@ app.post('/translate', urlparser, (req, res) => {
     //   res.status(500).send({ error: 'An error occurred while translating the text.' });
     // });
 
-    console.log("\n\n req.body is:  \n\n",req.body);
-    
+    console.log("\n\n req.body is:  \n\n", req.body);
+
 });
 
 server.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
+    console.log('Server is running on http://localhost:3000');
 });

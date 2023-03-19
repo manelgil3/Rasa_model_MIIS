@@ -19,7 +19,9 @@
     ```
 - To visualize the chatbot in you local machine run this command below on inside the path = UI
     ```
-    python -m http.server
+    node main.js
     ```
-
-
+- In order to install all necessary packages do:
+    ```
+    npm install <package>
+    ```

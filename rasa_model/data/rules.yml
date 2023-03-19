@@ -1,16 +1,83 @@
 version: "3.1"
 
 rules:
+  - rule: welcome user
+    conversation_start: true  # this rule only applies at the beginning of a conversation
+    steps:
+      - intent: welcome
+      - action: utter_welcome
+  - rule: Implementation of the Two-Stage-Fallback
+    steps:
+    - intent: nlu_fallback
+    - action: action_two_stage_fallback
+    - active_loop: action_two_stage_fallback
+  # - rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  #   steps:
+  #   - intent: nlu_fallback
+  #   - action: utter_please_rephrase
+  - rule: out-of-scope
+    steps:
+    - intent: out_of_scope
+    - action: utter_out_of_scope
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+    - intent: goodbye
+    - action: utter_goodbye
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+    - intent: bot_challenge
+    - action: utter_iamabot
+  - rule: respond to FAQs
+    steps:
+    - intent: faq
+    - action: utter_faq
+  - rule: respond to chitchat
+    steps:
+    - intent: chitchat
+    - action: utter_chitchat
+  - rule: Trigger action_listen whenever waiting_for_user_input is true
+    condition:
+    - slot_was_set:
+      - waiting_for_user_input: true
+    steps:
+    - action: ActionSelectProfessor
+    - action: action_listen
+  - rule: Trigger ask for help when professor group is returned
+    condition:
+    - slot_was_set:
+      - waiting_for_user_input: false
+    steps:
+    - action: ActionReturnProfessorGroup
+    - action: utter_did_that_help
+  - rule: Trigger action_listen whenever waiting_for_user_input is true
+    condition:
+    - slot_was_set:
+      - waiting_for_user_input: true
+    steps:
+    - action: ActionSelectGroup
+    - action: action_listen
+  - rule: Trigger ask for help when group professors is returned
+    condition:
+    - slot_was_set:
+      - waiting_for_user_input: false
+    steps:
+    - action: ActionReturnGroupProfessors
+    - action: utter_did_that_help
+  - rule: Trigger ask for help when professor office is returned
+    condition:
+    - slot_was_set:
+      - waiting_for_user_input: false
+    steps:
+    - action: ActionReturnProfessorOffice
+    - action: utter_did_that_help
+  - rule: Trigger ask for help when professor office is returned
+    condition:
+    - slot_was_set:
+      - waiting_for_user_input: false
+    steps:
+    - action: ActionReturnProfessorOffice
+    - action: utter_did_that_help
 
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
 
 # - rule: Select professor option
 #   condition:
@@ -19,51 +86,6 @@ rules:
 #   steps:
 #   - action: ActionSelectProfessor
 #   - action: action_listen
-
-
-
-
-- rule: Trigger action_listen whenever waiting_for_user_input is true
-  condition:
-  - slot_was_set:
-    - waiting_for_user_input: true
-  steps:
-  - action: ActionSelectProfessor
-  - action: action_listen
-
-- rule: Trigger ask for help when professor group is returned
-  condition:
-  - slot_was_set:
-    - waiting_for_user_input: false
-  steps:
-  - action: ActionReturnProfessorGroup
-  - action: utter_did_that_help
-
-- rule: Trigger action_listen whenever waiting_for_user_input is true
-  condition:
-  - slot_was_set:
-    - waiting_for_user_input: true
-  steps:
-  - action: ActionSelectGroup
-  - action: action_listen
-
-- rule: Trigger ask for help when group professors is returned
-  condition:
-  - slot_was_set:
-    - waiting_for_user_input: false
-  steps:
-  - action: ActionReturnGroupProfessors
-  - action: utter_did_that_help
-
-- rule: Trigger ask for help when professor office is returned
-  condition:
-  - slot_was_set:
-    - waiting_for_user_input: false
-  steps:
-  - action: ActionReturnProfessorOffice
-  - action: utter_did_that_help
-
-
 
 # - rule: Activate Option Form
 #   condition:

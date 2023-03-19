@@ -117,6 +117,30 @@ stories:
   - action: ActionReturnProfessorOffice
   - action: utter_did_that_help
 
+- story: Ask for professor email path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor_email
+  - action: ActionReturnProfessorEmail
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorEmail
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: Ask for email professor
+  steps:
+  - intent: ask_professor_email
+  - action: ActionReturnProfessorEmail
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorEmail
+  - action: utter_did_that_help
+
 - story: interactive_story_1
   steps:
   - intent: greet

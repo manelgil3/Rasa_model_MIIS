@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-70GDpaHjW8fV7wpoJMKfemG7fKNQZ8uVyydUn9tP9v7BYpIy8l/F5NwE0PDBv5h5N5D5BG/1c9XLO0c0G90Qg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
 
@@ -11,43 +12,25 @@
                     <i class="fas fa-comment-alt"></i> EVA Virtual Assistant
                 </div>
                 <div class="msger-header-options">
-                    <span><i class="fas fa-cog"></i></span>
+                    <div class="dropdown">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                    <button class="dropbtn"><i class="fas fa-cog"></i></button>
                 </div>
+                <!-- <div class="msger-header-options">
+                     <span><i class="fas fa-cog"></i></span>
+                    <select>
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
+                </div> -->
             </header>
 
             <main class="msger-chat">
-                <div class="msg left-msg">
-                    <div
-                        class="msg-img"
-                        style="background-image:url(https://www.upf.edu/documents/7283915/220614254/UPFt_rgb.png)"></div>
-                    <div class="msg-bubble">
-                        <div class="msg-info">
-                            <div class="msg-info-name">EVA</div>
-                            
-                        </div>
-
-                        <div class="msg-text">
-                            Hey, welcome to your personal virtual agent! I can help you with several topics about dtic masters at UPF, feel free to ask about anything :)
-                        </div>
-                    </div>
-                </div>
-
-                <div class="msg left-msg">
-                    <div
-                        class="msg-img"
-                        style="background-image:url(https://www.upf.edu/documents/7283915/220614254/UPFt_rgb.png)"></div>
-                    <div class="msg-bubble">
-                        <div class="msg-info">
-                            <div class="msg-info-name">EVA</div>
-                            
-                        </div>
-
-                        <div class="msg-text">
-                            Hola, ¡bienvenido a tu agente virtual personal! Puedo ayudarte con varios temas sobre masters dtic en la UPF, no dudes en preguntar sobre cualquier cosa :)
-                        </div>
-                    </div>
-                </div>
-
+                
             </main>
 
             <form class="msger-inputarea">

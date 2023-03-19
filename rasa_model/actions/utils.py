@@ -28,7 +28,7 @@ def listadoDF():
     full_path = os.path.join(absolute_path, relative_path)
 
     df = pd.read_csv(full_path)
-    df.columns = ['fullname', 'Group', 'Office', 'Building']
+    df.columns = ['fullname', 'Group', 'Office', 'Building', 'Email']
     df = df.dropna(axis = 0, how = 'all')
     df = df.reset_index(drop=True)
     df['fullname'] = df['fullname'].apply(parse_name)

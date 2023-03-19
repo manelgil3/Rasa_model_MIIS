@@ -163,9 +163,43 @@ class ActionReturnProfessorOffice(Action):
         else:
             return [SlotSet("waiting_for_user_input", True),SlotSet('professors', professors), FollowupAction("ActionSelectProfessor")]
 
-# return email from profesor
-# 
+class ActionReturnProfessorEmail(Action):
 
+    def name(self) -> Text:
+        return "ActionReturnProfessorEmail"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+                
+        professors = utils.get_professor_from_entity(dispatcher, tracker, listado)
+        if not professors: return
+
+        if len(professors)==1:
+            professor_name = professors[0]['fullname']
+
+            # Generate response and slot
+            for index, row in listado.iterrows():
+
+                listado_fullname = utils.remove_all_extra_spaces(row['fullname'].upper())
+                if "".join(listado_fullname.split()) == "".join(professor_name.split()):
+                    professor_email = row['Email']
+                    response = f"Professor {professor_name}'s email is {professor_email} ."
+                    break
+                else:
+                    response = "null"
+                    professor_email = "null"
+
+            dispatcher.utter_message(response)
+            return [
+                SlotSet("waiting_for_user_input", False),
+                SlotSet("PERSON", professor_name),
+                SlotSet("professor_name", professor_name),
+                # SlotSet('professors', None)
+                SlotSet('selected_professor', None)
+            ]
+        else:
+            return [SlotSet("waiting_for_user_input", True),SlotSet('professors', professors), FollowupAction("ActionSelectProfessor")]
 
 class ActionSelectProfessor(Action):
 
