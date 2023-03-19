@@ -1,13 +1,13 @@
-NOMBRE,GRUPO ,DESPACHO, EDIFICIO, EMAIL
+NOMBRE,GRUPO ,DESPACHO,EDIFICIO,EMAIL
 ,,,
 "LOBO , JORGE",AI&ML: Artificial Intelligence and Machine Learning group,55110,,jorge.lobo@upf.edu
 "GASPARRINI , MARCO JEROME",AI&ML: Artificial Intelligence and Machine Learning group,55130,
 "GOMEZ CERDA, VICENTE",AI&ML: Artificial Intelligence and Machine Learning group,55130,
-"JONSSON , ANDERS",AI&ML: Artificial Intelligence and Machine Learning group,55130,,anders.jonsson@upf.edu
+"JONSSON , ANDERS",AI&ML: Artificial Intelligence and Machine Learning group,55130,
 "NEU , GERGELY",AI&ML: Artificial Intelligence and Machine Learning group,55130,
 "SANCHEZ FIBLA, MARTI",AI&ML: Artificial Intelligence and Machine Learning group,55130,
-"DALMAU LLORET, VICTOR",AI&ML: Artificial Intelligence and Machine Learning group,55200,,victor.dalmau@upf.edu
-"ESTIVILL CASTRO, VLADIMIR",AI&ML: Artificial Intelligence and Machine Learning group,55201,,vladimir.estivill@upf.edu
+"DALMAU LLORET, VICTOR",AI&ML: Artificial Intelligence and Machine Learning group,55200,
+"ESTIVILL CASTRO, VLADIMIR",AI&ML: Artificial Intelligence and Machine Learning group,55201,
 "ARAGON ASENJO, PABLO",AI&ML: Artificial Intelligence and Machine Learning group,55210,
 "BAS SERRANO, JOAN",AI&ML: Artificial Intelligence and Machine Learning group,55210,
 "BUTTI , SILVIA",AI&ML: Artificial Intelligence and Machine Learning group,55215,
@@ -30,7 +30,7 @@ NOMBRE,GRUPO ,DESPACHO, EDIFICIO, EMAIL
 "JIMENEZ PEREZ, GUILLERMO",BERG Biomedical Electronics Research Group,55119,
 "LOPEZ VELAZCO, ROCIO",BERG Biomedical Electronics Research Group,55119,
 "PERERA I BEL, ENRIC",BERG Biomedical Electronics Research Group,55119,
-"IVORRA CANO, ANTONIO",BERG Biomedical Electronics Research Group,51017,Edifici La Nau,antoni.ivorra@upf.edu
+"IVORRA CANO, ANTONIO",BERG Biomedical Electronics Research Group,51017,Edifici La Nau
 "ARSIWALLA , XERXES DINYAR",CMTECH: Cognitive Media Technologies Group,51100,Edifici La Nau
 "ZUCCA , RICCARDO",CMTECH: Cognitive Media Technologies Group,51100,Edifici La Nau
 "CROWELL , CIERA",CMTECH: Cognitive Media Technologies Group,51107,Edifici La Nau
@@ -43,13 +43,13 @@ NOMBRE,GRUPO ,DESPACHO, EDIFICIO, EMAIL
 "FERNANDEZ LOPEZ, ADRIANA",CMTECH: Cognitive Media Technologies Group,55124,
 "HAHN , GERALD",CMTECH: Cognitive Media Technologies Group,55124,
 "MORALES MUÑOZ, MARIA DE ARACELI",CMTECH: Cognitive Media Technologies Group,55124,
-"SUKNO , FEDERICO MATEO",CMTECH: Cognitive Media Technologies Group,55124,,federico.sukno@upf.edu
-"PARES BURGUES, NARCIS",CMTECH: Cognitive Media Technologies Group,55220,,narcis.pares@upf.edu
+"SUKNO , FEDERICO MATEO",CMTECH: Cognitive Media Technologies Group,55124,
+"PARES BURGUES, NARCIS",CMTECH: Cognitive Media Technologies Group,55220,
 "SAYIS , BATUHAN",CMTECH: Cognitive Media Technologies Group /MTG: Music Technology Group,55312,
-"MONTBRIÓ FAIREN, ERNEST",Computational Neuroscience,55422,,ernest.montbrio@upf.edu
+"MONTBRIÓ FAIREN, ERNEST",Computational Neuroscience,55422,
 "BERTALMIO BARATE, MARCELO JOSÉ","IP4EC
 Image processing
-for enhanced cinematography",55203,,marcelo.bertalmio@upf.edu
+for enhanced cinematography",55203,
 "CANHAM , TREVOR DALTON","IP4EC
 Image processing
 for enhanced cinematography",55205,
@@ -71,19 +71,19 @@ for enhanced cinematography",55221,
 "ARBUES SANGÜESA, ADRIÀ",IPG: Image Processing Group,55116,
 "PONCE ALVAREZ, ADRIAN FERNANDO",IPG: Image Processing Group,55116,
 "VITORIA CARRERA, PATRICIA",IPG: Image Processing Group,55116,
-"BALLESTER NICOLAU, COLOMA MARIA",IPG: Image Processing Group,55118,,coloma.ballester@upf.edu
-"HARO ORTEGA, GLORIA",IPG: Image Processing Group,55118,,gloria.haro@upf.edu
+"BALLESTER NICOLAU, COLOMA MARIA",IPG: Image Processing Group,55118,
+"HARO ORTEGA, GLORIA",IPG: Image Processing Group,55118,
 "RAAD CISA, LARA",IPG: Image Processing Group,55120,
 "GARAMENDI BRAGADO, JUAN FRANCISCO",IPG: Image Processing Group,55424,
 "MONTESINOS GARCIA, JUAN FELIPE",IPG: Image Processing Group /MTG: Music Technology Group,55120,
 "SHENOY KADANDALE , VENKATESH",IPG: Image Processing Group/ MTG: Music Technology Group,55120,
 "SLIZOVSKAIA , OLGA",IPG: Image Processing Group/ MTG: Music Technology Group,55120,
 "FONT SEGURA, JOSEP",ITC: Information Theory and Coding Group,55204,
-"MARTINEZ VICENTE, ALFONSO",ITC: Information Theory and Coding Group,55204,,alfonso.martinez@upf.edu
+"MARTINEZ VICENTE, ALFONSO",ITC: Information Theory and Coding Group,55204,
 "COLOMBARO , IVANO",ITC: Information Theory and Coding Group,55206,
 "REZAZADEH , AREZOU",ITC: Information Theory and Coding Group,55206,
 "BARRACHINA MUÑOZ, SERGIO",ITC: Information Theory and Coding Group,55208,
-"GUILLEN FABREGAS, ALBERT",ITC: Information Theory and Coding Group,55222,,albert.guillen@upf.edu
+"GUILLEN FABREGAS, ALBERT",ITC: Information Theory and Coding Group,55222,
 "MARICHAL BARAIBAR, SEBASTIÁN ROBERTO",ITG: Interactive Technologies Group,55102,
 "AGENJO ASENSIO, JAVIER",ITG: Interactive Technologies Group,55112,
 "BASEER , IRUM",ITG: Interactive Technologies Group,55112,
@@ -93,7 +93,7 @@ for enhanced cinematography",55221,
 "MARQUES , RICARDO JORGE",ITG: Interactive Technologies Group,55112,
 "MARTÍNEZ MORENO, JUDIT",ITG: Interactive Technologies Group,55112,
 "PLASS PORTULAS, HERMANN",ITG: Interactive Technologies Group,55112,
-"BLAT GIMENO, JOSE ANGEL",ITG: Interactive Technologies Group,55126,,josep.blat@upf.edu
+"BLAT GIMENO, JOSE ANGEL",ITG: Interactive Technologies Group,55126,
 ,,,
 "TOVSTOGAN , PHILIP",MTG: Music Technology Group,55300,
 "YESILER , MEHMET FURKAN",MTG: Music Technology Group,55301,
@@ -120,11 +120,11 @@ for enhanced cinematography",55221,
 "GKIOKAS , AGGELOS",MTG: Music Technology Group,55312,
 "MIRON , MARIUS",MTG: Music Technology Group,55312,
 "PEREZ CARRILLO, ALFONSO ANTONIO",MTG: Music Technology Group,55312,
-"GOMEZ GUTIERREZ, EMILIA",MTG: Music Technology Group,55314,,emilia.gomez@upf.edu
+"GOMEZ GUTIERREZ, EMILIA",MTG: Music Technology Group,55314,
 "GUAUS TERMENS, ENRIQUE",MTG: Music Technology Group,55314,
 "MARTORELL DOMINGUEZ, AGUSTIN",MTG: Music Technology Group,55314,
 "GIRALDO MENDEZ, SERGIO IVÁN",MTG: Music Technology Group,55316,
-"RAMIREZ MELENDEZ, RAFAEL",MTG: Music Technology Group,55316,,rafael.ramirez@upf.edu
+"RAMIREZ MELENDEZ, RAFAEL",MTG: Music Technology Group,55316,
 "VAMVAKOUSIS , ZACHARIAS",MTG: Music Technology Group,55316,
 "CUESTA MUSSARRA, HELENA",MTG: Music Technology Group,55318,
 "GOMEZ CAÑON, JUAN SEBASTIÁN",MTG: Music Technology Group,55318,
@@ -135,14 +135,14 @@ for enhanced cinematography",55221,
 "FARIDI ERMAGAN, AZADEH",MTG: Music Technology Group,55320,
 "ESPI FERNANDEZ, SONIA",MTG: Music Technology Group,55322,
 "GARRIDO FRANQUET, CRISTINA",MTG: Music Technology Group,55322,
-"SERRA CASALS, FRANCESC XAVIER",MTG: Music Technology Group,55324,,xavier.serra@upf.edu
-"JORDA PUIG, SERGI",MTG: Music Technology Group,55326,,sergi.jorda@upf.edu
+"SERRA CASALS, FRANCESC XAVIER",MTG: Music Technology Group,55324,
+"JORDA PUIG, SERGI",MTG: Music Technology Group,55326,
 "LEWIN RICHTER OSIANDER, ANDRES",MTG: Music Technology Group / PHONOS,51005,Edifici La Nau
 "FARALDO PEREZ, ANGEL",MTG: Music Technology Group / PHONOS,55318,
-"WANNER , LEO",Natural Language Processing,55418,,leo.wanner@upf.edu
-"SAGGION , HORACIO",Natural Language Processing,55422,,horacio.saggion@upf.edu
-"OLIVER RIERA, MIQUEL",NETS Network Technologies and Strategies Group,55226,,miquel.oliver@upf.edu
-"ANDRZEJAK , RALPH GREGOR",NTSA: Nonlinear Time Series Analysis Group,55100,,ralph.andrzejak@upf.edu
+"WANNER , LEO",Natural Language Processing,55418,
+"SAGGION , HORACIO",Natural Language Processing,55422,
+"OLIVER RIERA, MIQUEL",NETS Network Technologies and Strategies Group,55226,
+"ANDRZEJAK , RALPH GREGOR",NTSA: Nonlinear Time Series Analysis Group,55100,
 "DEVALLE , FEDERICO",NTSA: Nonlinear Time Series Analysis Group,55117,
 "GONZALEZ MARTINEZ, CRISTINA",NTSA: Nonlinear Time Series Analysis Group,55117,
 "MALVESTIO , IRENE",NTSA: Nonlinear Time Series Analysis Group,55117,
@@ -156,17 +156,17 @@ for enhanced cinematography",55221,
 "NOGUEIRA , MARIANA",Physense: Sensing in Physiology and Biomedicine Group,55123,
 "NUNES , CECILIA MARIA COSTA BENTO SOUSA",Physense: Sensing in Physiology and Biomedicine Group,55123,
 "RASOULIGANDOMANI , MORTEZA",Physense: Sensing in Physiology and Biomedicine Group,55123,
-"CAMARA REY, OSCAR",Physense: Sensing in Physiology and Biomedicine Group,55103a,,oscar.camara@upf.edu
-"BIJNENS , BART H",Physense: Sensing in Physiology and Biomedicine Group,55103b,,bart.bijnens@upf.edu
+"CAMARA REY, OSCAR",Physense: Sensing in Physiology and Biomedicine Group,55103a,
+"BIJNENS , BART H",Physense: Sensing in Physiology and Biomedicine Group,55103b,
 "BENAVENT CLIMENT, PALOMA",Research Service ,55223,
 "PASCUAL MOLINA, BELEN",Research Service ,55223,
 "RONDA CARRASCO, MANUEL",Research Service ,55223,
-"GONZALEZ BALLESTER, MIGUEL ANGEL","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55105,,ma.gonzalez@upf.edu
+"GONZALEZ BALLESTER, MIGUEL ANGEL","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55105,
 "CERESA , MARIO","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55107,
 "MANGADO LOPEZ, NEREA","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55107,
 "HEIL , KATHARINA","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55109,
 "LEKADIR , KARIM","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55109,
-"NOAILLY , JEROME BERNARD","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55109,,jerome.noailly@upf.edu
+"NOAILLY , JEROME BERNARD","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55109,
 "OLIVARES MIYARES, ANDY LUIS","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55115,
 "RUIZ WILLS, CARLOS EDUARDO","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55115,
 "TASSANI , SIMONE","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55115,
@@ -178,7 +178,7 @@ for enhanced cinematography",55221,
 "JIMENEZ SANCHEZ, AMELIA","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55123,
 "LLUCH ALVAREZ, ERIC","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55123,
 "MARTÍ CASTELLOTE, PABLO-MIKI","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55123,
-"PIELLA FENOY, GEMA","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55103a,,gemma.piella@upf.edu
+"PIELLA FENOY, GEMA","SIMBIOsys: Simulation, Imaging and Modelling for Biomedical Systems",55103a,
 "CODINA FILBA, JOAN",TALN; Natural Language Processing,55406,
 "ÖKTEM , HAMDI ALP",TALN; Natural Language Processing,55408,
 "FARRUS CABECERAN, MIREIA",TALN; Natural Language Processing,55420,
@@ -206,11 +206,11 @@ for enhanced cinematography",55221,
 "BEARDSLEY , MARC YOSHIMI",TIDE: Interactive & Distributed Technologies for Education,55102,
 "VUJOVIC , MILICA",TIDE: Interactive & Distributed Technologies for Education,55102,
 "ABENIA POLO, PASCUAL PABLO",TIDE: Interactive & Distributed Technologies for Education,55128,
-"HERNANDEZ LEO, DAVINIA",TIDE: Interactive & Distributed Technologies for Education,55128,,davinia.hernandez@upf.edu
+"HERNANDEZ LEO, DAVINIA",TIDE: Interactive & Distributed Technologies for Education,55128,
 "SANTOS RODRIGUEZ, PATRICIA",TIDE: Interactive & Distributed Technologies for Education,55128,
-"PEIG OLIVE, ENRIC",UBICALAB: Ubiquitous Computing Applications Lab,55008,,enric.peig@upf.edu
+"PEIG OLIVE, ENRIC",UBICALAB: Ubiquitous Computing Applications Lab,55008,
 "MELIA SEGUI, JOAN ANTONI",UBICALAB: Ubiquitous Computing Applications Lab,55221,
-"POUS ANDRES, RAFAEL",UBICALAB: Ubiquitous Computing Applications Lab,55426,,rafael.pous@upf.edu
+"POUS ANDRES, RAFAEL",UBICALAB: Ubiquitous Computing Applications Lab,55426,
 "CASAMAYOR PUJOL, VICTOR",UBICALAB: Ubiquitous Computing Applications Lab,55428,
 "MORENO OLIVER, VERONICA",UGA TIC - Pedagogue in USQUID,55307,
 "CHAMPION COLELL, JUDITH",UGA TIC Head of the Management and Administration  Unit,55012,
@@ -229,24 +229,24 @@ PATRICIA PINO,"UGA TIC: Research, Promotion & Activities",,
 XAVIER MONTE LLOPIS,"UGA TIC: Research, Promotion & Activities",55020,
 "JIMENEZ GARCIA, VANESSA","UGA TIC: Research, Promotion & Activities Coordinator",55020,
 "ADHIKARI , MOHIT HEMCHANDRA",WN: Wireless Networking Group,55101,
-"BELLALTA JIMENEZ, BORIS",WN: Wireless Networking Group,55202,,boris.bellalta@upf.edu
+"BELLALTA JIMENEZ, BORIS",WN: Wireless Networking Group,55202,
 "WILHELMI ROCA, FRANCISCO JOSE",WN: Wireless Networking Group,55208,
 "FRANZONI , FEDERICO",WN: Wireless Networking Group,55210,
 "NIKBAKHT SILAB, RASOUL",WN: Wireless Networking Group,55210,
 "PINDADO TOST, ZAIRA",WN: Wireless Networking Group,55210,
 "SALLERAS SOLER, XAVIER",WN: Wireless Networking Group,55210,
 "SILVA VELON, JAVIER",WN: Wireless Networking Group,55210,
-"DAZA FERNANDEZ, VANESA",WN: Wireless Networking Group,55216,,vanesa.daza@upf.edu
+"DAZA FERNANDEZ, VANESA",WN: Wireless Networking Group,55216,
 "RAFOLS SALVADOR, CARLA",WN: Wireless Networking Group,55216,
-"LOZANO SOLSONA, ANGEL",WN: Wireless Networking Group,55218,,angel.lozano@upf.edu
+"LOZANO SOLSONA, ANGEL",WN: Wireless Networking Group,55218,
 "ADAME VAZQUEZ, ANTONIO",WN: Wireless Networking Group,55228,
 "BEL PEREIRA, ALBERT",WN: Wireless Networking Group,55228,
 "CARRASCOSA ZAMACOIS, MARC",WN: Wireless Networking Group,55228,
 "ALCAINE OTIN, ALEJANDRO",WSSC: Web Science and Social Computing,55107,
-"CASTILLO OCARANZA, CARLOS ALBERTO ALEJANDRO",WSSC: Web Science and Social Computing,55201,,carlos.castillo@upf.edu
+"CASTILLO OCARANZA, CARLOS ALBERTO ALEJANDRO",WSSC: Web Science and Social Computing,55201,
 "FREIRE VEIGA, ANA MARIA",WSSC: Web Science and Social Computing,55215,
 "GALELLA TOLEDO, SANTIAGO",WSSC: Web Science and Social Computing,55215,
 "KARIMIHAGHIGHI , MARZIEH",WSSC: Web Science and Social Computing,55215,
 "RAMIREZ CIFUENTES, DIANA MICHELLE",WSSC: Web Science and Social Computing,55215,
 "RAUSCHENBERGER , MARIA",WSSC: Web Science and Social Computing,55215,
-"BAEZA YATES, RICARDO ALBERTO",WSSC: Web Science and Social Computing,55228,,ricardo.baeza@upf.edu
+"BAEZA YATES, RICARDO ALBERTO",WSSC: Web Science and Social Computing,55228,

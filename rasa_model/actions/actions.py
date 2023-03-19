@@ -184,7 +184,10 @@ class ActionReturnProfessorEmail(Action):
                 listado_fullname = utils.remove_all_extra_spaces(row['fullname'].upper())
                 if "".join(listado_fullname.split()) == "".join(professor_name.split()):
                     professor_email = row['Email']
-                    response = f"Professor {professor_name}'s email is {professor_email} ."
+                    if professor_email:
+                        response = f"Professor {professor_name}'s email is {professor_email} ."
+                    else:
+                        response = f"Sorry, this information is not available in my dataset. Try to search in the official website of the university: https://www.upf.edu/"
                     break
                 else:
                     response = "null"
