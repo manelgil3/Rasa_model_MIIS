@@ -35,48 +35,48 @@ rules:
     steps:
     - intent: chitchat
     - action: utter_chitchat
-  - rule: Trigger action_listen whenever waiting_for_user_input is true
-    condition:
-    - slot_was_set:
-      - waiting_for_user_input: true
-    steps:
-    - action: ActionSelectProfessor
-    - action: action_listen
-  - rule: Trigger ask for help when professor group is returned
-    condition:
-    - slot_was_set:
-      - waiting_for_user_input: false
-    steps:
-    - action: ActionReturnProfessorGroup
-    - action: utter_did_that_help
-  - rule: Trigger action_listen whenever waiting_for_user_input is true
-    condition:
-    - slot_was_set:
-      - waiting_for_user_input: true
-    steps:
-    - action: ActionSelectGroup
-    - action: action_listen
-  - rule: Trigger ask for help when group professors is returned
-    condition:
-    - slot_was_set:
-      - waiting_for_user_input: false
-    steps:
-    - action: ActionReturnGroupProfessors
-    - action: utter_did_that_help
-  - rule: Trigger ask for help when professor office is returned
-    condition:
-    - slot_was_set:
-      - waiting_for_user_input: false
-    steps:
-    - action: ActionReturnProfessorOffice
-    - action: utter_did_that_help
-  - rule: Trigger ask for help when professor office is returned
-    condition:
-    - slot_was_set:
-      - waiting_for_user_input: false
-    steps:
-    - action: ActionReturnProfessorOffice
-    - action: utter_did_that_help
+  # - rule: Trigger action_listen whenever waiting_for_user_input is true
+  #   condition:
+  #   - slot_was_set:
+  #     - waiting_for_user_input: true
+  #   steps:
+  #   - action: ActionSelectProfessor
+  #   - action: action_listen
+  # - rule: Trigger ask for help when professor group is returned
+  #   condition:
+  #   - slot_was_set:
+  #     - waiting_for_user_input: false
+  #   steps:
+  #   - action: ActionReturnProfessorGroup
+  #   - action: utter_did_that_help
+  # - rule: Trigger action_listen whenever waiting_for_user_input is true
+  #   condition:
+  #   - slot_was_set:
+  #     - waiting_for_user_input: true
+  #   steps:
+  #   - action: ActionSelectGroup
+  #   - action: action_listen
+  # - rule: Trigger ask for help when group professors is returned
+  #   condition:
+  #   - slot_was_set:
+  #     - waiting_for_user_input: false
+  #   steps:
+  #   - action: ActionReturnGroupProfessors
+  #   - action: utter_did_that_help
+  # - rule: Trigger ask for help when professor office is returned
+  #   condition:
+  #   - slot_was_set:
+  #     - waiting_for_user_input: false
+  #   steps:
+  #   - action: ActionReturnProfessorOffice
+  #   - action: utter_did_that_help
+  # - rule: Trigger ask for help when professor office is returned
+  #   condition:
+  #   - slot_was_set:
+  #     - waiting_for_user_input: false
+  #   steps:
+  #   - action: ActionReturnProfessorOffice
+  #   - action: utter_did_that_help
 
 
 # - rule: Select professor option

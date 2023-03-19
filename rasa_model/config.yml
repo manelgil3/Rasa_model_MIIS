@@ -8,10 +8,13 @@ language: en
 
 actions:
   - ActionReturnProfessorGroup
-  - ActionSelectProfessor
   - ActionReturnGroupProfessors
+  - ActionSelectProfessor
   - ActionSelectGroup
+  - action_set_slot
   - ActionReturnProfessorOffice
+  - ActionReturnProfessorEmail
+  - Action_get_temperature
 
 
 pipeline:
@@ -52,22 +55,22 @@ pipeline:
     min_ngram: 1
     max_ngram: 4
   - name: DIETClassifier
-    epochs: 3000
+    epochs: 100
     constrain_similarities: true
     checkpoint_model: True
   - name: EntitySynonymMapper
   - name: ResponseSelector
-    epochs: 3000
+    epochs: 100
     retrieval_intent: faq
     constrain_similarities: true
     checkpoint_model: True
   - name: ResponseSelector
-    epochs: 3000
+    epochs: 100
     retrieval_intent: chitchat
     constrain_similarities: true
     checkpoint_model: True
   - name: FallbackClassifier
-    threshold: 0.4
+    threshold: 0.3
     ambiguity_threshold: 0.1
     pipeline:
   - name: RegexEntityExtractor
@@ -91,22 +94,22 @@ policies:
 #     epochs: 100
 #     constrain_similarities: true
 
-  - name: MemoizationPolicy
-  - name: RulePolicy
-    # Confidence threshold for the `core_fallback_action_name` to apply.
-    # The action will apply if no other action was predicted with
-    # a confidence >= core_fallback_threshold
-    core_fallback_threshold: 0.4
-    core_fallback_action_name: "action_default_fallback"
-    enable_fallback_prediction: True
-  - name: UnexpecTEDIntentPolicy
-    max_history: 5
-    epochs: 3000
-    checkpoint_model: True
-  - name: TEDPolicy
-    max_history: 5
-    epochs: 3000
-    evaluate_on_number_of_examples: 14
-    evaluate_every_number_of_epochs: 1
-    constrain_similarities: true
-    checkpoint_model: True
+  # - name: MemoizationPolicy
+  # - name: RulePolicy
+  #   # Confidence threshold for the `core_fallback_action_name` to apply.
+  #   # The action will apply if no other action was predicted with
+  #   # a confidence >= core_fallback_threshold
+  #   core_fallback_threshold: 0.3
+  #   core_fallback_action_name: "action_default_fallback"
+  #   enable_fallback_prediction: True
+  # - name: UnexpecTEDIntentPolicy
+  #   max_history: 5
+  #   epochs: 100
+  #   checkpoint_model: True
+  # - name: TEDPolicy
+  #   max_history: 5
+  #   epochs: 100
+  #   evaluate_on_number_of_examples: 14
+  #   evaluate_every_number_of_epochs: 1
+  #   constrain_similarities: true
+  #   checkpoint_model: True

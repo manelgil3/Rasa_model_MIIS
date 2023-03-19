@@ -19,10 +19,28 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction
 from typing import Any, Text, Dict, List, Union
 import utils
+from weather_api import get_temperature_barcelona
 
 listado = utils.listadoDF()
 professors = []
 groups = []
+
+
+class ActionGetTemperature(Action):
+    def name(self):
+        return "Action_get_temperature"
+
+    def run(self, dispatcher, tracker, domain):
+        api_key = "788622276a34d76607945a4868fe9b46"
+        temperature = get_temperature_barcelona(api_key)
+
+        if temperature is not None:
+            response = f"The current temperature in Barcelona is {temperature}°C"
+        else:
+            response = "Error getting the temperature."
+
+        dispatcher.utter_message(text=response)
+        return []
 
 class ActionReturnProfessorGroup(Action):
 
@@ -58,7 +76,8 @@ class ActionReturnProfessorGroup(Action):
                 SlotSet("PERSON", professor_name),
                 SlotSet("professor_name", professor_name),
                 # SlotSet('professors', None)
-                SlotSet('selected_professor', None)
+                SlotSet('selected_professor', None),
+                FollowupAction("utter_did_that_help")
             ]
         else:
             return [SlotSet("waiting_for_user_input", True),SlotSet('professors', professors), FollowupAction("ActionSelectProfessor")]
@@ -101,7 +120,8 @@ class ActionReturnGroupProfessors(Action):
                 SlotSet("GROUP", group_name),
                 SlotSet("professors", professor_name),
                 #SlotSet('groups', None)
-                SlotSet('selected_group', None)
+                SlotSet('selected_group', None),
+                FollowupAction("utter_did_that_help")
             ]
         else:
             return [SlotSet("waiting_for_user_input", True),SlotSet('groups', groups), FollowupAction("ActionSelectGroup")]
@@ -158,7 +178,8 @@ class ActionReturnProfessorOffice(Action):
                 SlotSet("PERSON", professor_name),
                 SlotSet("professor_name", professor_name),
                 # SlotSet('professors', None)
-                SlotSet('selected_professor', None)
+                SlotSet('selected_professor', None),
+                FollowupAction("utter_did_that_help")
             ]
         else:
             return [SlotSet("waiting_for_user_input", True),SlotSet('professors', professors), FollowupAction("ActionSelectProfessor")]
@@ -199,7 +220,9 @@ class ActionReturnProfessorEmail(Action):
                 SlotSet("PERSON", professor_name),
                 SlotSet("professor_name", professor_name),
                 # SlotSet('professors', None)
-                SlotSet('selected_professor', None)
+                SlotSet("professor_email", professor_email),
+                SlotSet('selected_professor', None),
+                FollowupAction("utter_did_that_help")
             ]
         else:
             return [SlotSet("waiting_for_user_input", True),SlotSet('professors', professors), FollowupAction("ActionSelectProfessor")]

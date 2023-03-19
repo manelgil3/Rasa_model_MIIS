@@ -2,6 +2,11 @@ version: "3.1"
 
 stories:
 
+- story: get temperature story
+  steps:
+  - intent: ask_temperature
+  - action: Action_get_temperature
+
 - story: happy path
   steps:
   - intent: greet
@@ -141,23 +146,243 @@ stories:
   - action: ActionReturnProfessorEmail
   - action: utter_did_that_help
 
-- story: interactive_story_1
+# - story: interactive_story_1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: ask_professor_group
+#   - action: ActionReturnProfessorGroup
+#   - slot_was_set:
+#     - waiting_for_user_input: true
+#   - action: ActionSelectProfessor
+#   - intent: inform
+#     entities:
+#     - selected_professor
+#   - slot_was_set:
+#     - selected_professor:
+#   - action: ActionReturnProfessorGroup
+#   - slot_was_set:
+#     - waiting_for_user_input: false
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_goodbye
+
+#MANEL NUEVAS########################################################################
+
+- story: Ask for professor email path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor_email
+  - action: ActionReturnProfessorEmail
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorEmail
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: Ask for multiple professors group
   steps:
   - intent: greet
   - action: utter_greet
   - intent: ask_professor_group
   - action: ActionReturnProfessorGroup
-  - slot_was_set:
-    - waiting_for_user_input: true
   - action: ActionSelectProfessor
+  - action: action_listen
   - intent: inform
-    entities:
-    - selected_professor
-  - slot_was_set:
-    - selected_professor:
   - action: ActionReturnProfessorGroup
-  - slot_was_set:
-    - waiting_for_user_input: false
+  - action: utter_did_that_help
+  - intent: ask_other_professor_same_intent
+  - action: ActionReturnProfessorGroup
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorGroup
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_goodbye
+
+- story: Ask for multiple professors office
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor_office
+  - action: ActionReturnProfessorOffice
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorOffice
+  - action: utter_did_that_help
+  - intent: ask_other_professor_same_intent
+  - action: ActionReturnProfessorOffice
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorOffice
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: Ask for multiple professors email
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor_email
+  - action: ActionReturnProfessorEmail
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorEmail
+  - action: utter_did_that_help
+  - intent: ask_other_professor_same_intent
+  - action: ActionReturnProfessorEmail
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorEmail
+  - action: utter_did_that_help  
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: Ask for professor's Group and Office path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor_group
+  - action: ActionReturnProfessorGroup
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorGroup
+  - action: utter_did_that_help
+  - intent: ask_same_professor_office
+  - action: ActionReturnProfessorOffice
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorOffice
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: Ask for professor's Office and Group path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor_group
+  - action: ActionReturnProfessorOffice
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorOffice
+  - action: utter_did_that_help
+  - intent: ask_same_professor_group
+  - action: ActionReturnProfessorGroup
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorGroup
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: Ask for professor's Office, Group and Email path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor_group
+  - action: ActionReturnProfessorOffice
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorOffice
+  - action: utter_did_that_help
+  - intent: ask_same_professor_group
+  - action: ActionReturnProfessorGroup
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorGroup
+  - action: utter_did_that_help
+  - intent: ask_same_professor_email
+  - action: ActionReturnProfessorEmail
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorEmail
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: Ask for professor's Group, Office and Email path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor_group
+  - action: ActionReturnProfessorGroup
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorGroup
+  - action: utter_did_that_help
+  - intent: ask_same_professor_office
+  - action: ActionReturnProfessorOffice
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorOffice
+  - action: utter_did_that_help
+  - intent: ask_same_professor_email
+  - action: ActionReturnProfessorEmail
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorEmail
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: Ask for professor's Email, Group and Office path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_professor_email
+  - action: ActionReturnProfessorEmail
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorEmail
+  - action: utter_did_that_help
+  - intent: ask_same_professor_group
+  - action: ActionReturnProfessorGroup
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorGroup
+  - action: utter_did_that_help
+  - intent: ask_same_professor_office
+  - action: ActionReturnProfessorOffice
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorOffice
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: Ask group professors from same group
+  steps:
+  - intent: ask_professor_group
+  - action: ActionReturnProfessorGroup
+  - action: ActionSelectProfessor
+  - action: action_listen
+  - intent: inform
+  - action: ActionReturnProfessorGroup
+  - action: utter_did_that_help
+  - intent: ask_same_group_professors
+  - action: ActionReturnGroupProfessors
+  - action: utter_did_that_help
+#####################################################################################
+

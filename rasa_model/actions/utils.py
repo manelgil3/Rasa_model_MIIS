@@ -99,14 +99,16 @@ def detectProfessor(professor_name:str, listado:pd.DataFrame):
 def get_professor_from_entity(dispatcher:CollectingDispatcher, tracker: Tracker, listado:pd.DataFrame):
     # Get entities from user input
         entities = tracker.latest_message.get('entities')
+        professor_name_from_slot = tracker.get_slot("professor_name").upper()
+        selected_professor = tracker.get_slot("selected_professor")
+
         print(entities)
-        if not entities:
+        if (not entities) and (professor_name_from_slot == None) and (selected_professor==None):
             response = "No professor name detected. Please try to repeat the question. Remember names go with capital letters."
             dispatcher.utter_message(response)
             return []
         else:
-            professor_name_from_slot = tracker.get_slot("professor_name").upper()
-            selected_professor = tracker.get_slot("selected_professor")
+            
             professor_name_from_Spacy = None
             professor_name_from_Regex = None
             for entity in entities:
@@ -174,19 +176,19 @@ def detectGroup(group_name:str, listado:pd.DataFrame):
 
 def get_group_from_entity(dispatcher:CollectingDispatcher, tracker: Tracker, listado:pd.DataFrame):
     entities = tracker.latest_message.get('entities')
+    group_name = tracker.get_slot("group_name")
+    selected_group = tracker.get_slot("selected_group")
     print(entities)
-    if not entities:
+    if (not entities) and (group_name == None) and (selected_group==None):
         response = "No group name detected. Please try to repeat the question. Try to be accurate when writing the name of the group."
         dispatcher.utter_message(response)
         return []
     else:
-        group_name = tracker.get_slot("group_name").upper()
-        selected_group = tracker.get_slot("selected_group")
         for entity in entities:
             if ((entity['entity'] == 'GROUP') and (entity['extractor']=='SpacyEntityExtractor')):
                 group_name = entity['value'].upper()
         if selected_group is not None:
             group_name = selected_group.upper()
         
-    groups = detectGroup(group_name, listado)
+    groups = detectGroup(group_name.upper(), listado)
     return groups

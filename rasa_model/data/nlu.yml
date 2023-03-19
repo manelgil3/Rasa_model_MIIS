@@ -1,17 +1,17 @@
 version: "3.1"
 nlu:
+  - intent: ask_temperature
+    examples: |
+      - What's the temperature in Barcelona?
+      - How hot is it in Barcelona?
+      - What is the current temperature in Barcelona?
+      - Tell me the temperature in Barcelona.
   - intent: chitchat/ask_name
     examples: |
       - What is your name?
       - May I know your name?
       - What do people call you?
       - Do you have a name for yourself?
-  - intent: chitchat/ask_weather
-    examples: |
-      - What's the weather like today?
-      - Does it look sunny outside today?
-      - Oh, do you mind checking the weather for me please?
-      - I like sunny days in Berlin.
   - intent: out_of_scope
     examples: |
       - I want to order food
@@ -123,6 +123,21 @@ nlu:
       - [Marco Jerome](PERSON) group
       - [Pablo Aragon](PERSON) group
       - [garcia](PERSON) group?
+      - What group is professor [Jorge Lobo](PERSON) a part of?
+      - Can you tell me the group of professor [Jorge Lobo](PERSON)?
+      - In which group is professor [Jorge Lobo](PERSON) working?
+      - What research group does professor [Jorge Lobo](PERSON) belong to?
+      - To which group is professor [Jorge Lobo](PERSON) affiliated?
+      - What group is professor [Marco Jerome](PERSON) a part of?
+      - Can you tell me the group of professor [Marco Jerome](PERSON)?
+      - In which group is professor [Marco Jerome](PERSON) working?
+      - What research group does professor [Marco Jerome](PERSON) belong to?
+      - To which group is professor [Marco Jerome](PERSON) affiliated?
+      - What group is professor [Pablo Aragon](PERSON) a part of?
+      - Can you tell me the group of professor [Pablo Aragon](PERSON)?
+      - In which group is professor [Pablo Aragon](PERSON) working?
+      - What research group does professor [Pablo Aragon](PERSON) belong to?
+      - To which group is professor [Pablo Aragon](PERSON) affiliated?
   - intent: ask_group_professors
     examples: |
       - Which teachers belong to group [AI&ML: Artificial Intelligence and Machine Learning group](GROUP)?
@@ -166,31 +181,167 @@ nlu:
       - Who belongs to [Computational Neuroscience](GROUP)?
       - Who belongs to [IP4EC Image processing](GROUP)?
       - Who belongs to [Interactive Technologies Group](GROUP)?
+      - Can you list the professors in group [AI&ML: Artificial Intelligence and Machine Learning group](GROUP)?
+      - Can you list the professors in group [Cognitive Media Technologies Group](GROUP)?
+      - Can you list the professors in group [Computational Neuroscience](GROUP)?
+      - Can you list the professors in group [IP4EC Image processing](GROUP)?
+      - Can you list the professors in group ?
+      - Which professors are in the group [AI&ML: Artificial Intelligence and Machine Learning group](GROUP)?
+      - Which professors are in the group [Cognitive Media Technologies Group](GROUP)?
+      - Which professors are in the group [Computational Neuroscience](GROUP)?
+      - Which professors are in the group [IP4EC Image processing](GROUP)?
+      - Which professors are in the group [Interactive Technologies Group](GROUP)?
+      - Tell me the professors associated with [AI&ML: Artificial Intelligence and Machine Learning group](GROUP)
+      - Tell me the professors associated with [Cognitive Media Technologies Group](GROUP)
+      - Tell me the professors associated with [Computational Neuroscience](GROUP)
+      - Tell me the professors associated with [IP4EC Image processing](GROUP)
+      - Tell me the professors associated with [Interactive Technologies Group](GROUP)
+      - Who are the members of the group [AI&ML: Artificial Intelligence and Machine Learning group](GROUP)?
+      - Who are the members of the group [Cognitive Media Technologies Group](GROUP)?
+      - Who are the members of the group [Computational Neuroscience](GROUP)?
+      - Who are the members of the group [IP4EC Image processing](GROUP)?
+      - Who are the members of the group [Interactive Technologies Group](GROUP)?
   - intent: ask_professor_office
     examples: |
       - Which is Professor [Jorge Lobo](PERSON)'s office?
-      - Which is the office of professor [Jorge Lobo](PERSON)? 
+      - Which is the office of professor [Jorge Lobo](PERSON)?
       - Where can I find Professor [Jorge Lobo](PERSON)?
       - Where is Professor [Jorge Lobo](PERSON)?
       - Office of [Jorge Lobo](PERSON)
       - Which is Professor [Marco Jerome](PERSON)'s office?
-      - Which is the office of professor [Marco Jerome](PERSON)? 
+      - Which is the office of professor [Marco Jerome](PERSON)?
       - Where can I find Professor [Marco Jerome](PERSON)?
       - Where is Professor [Marco Jerome](PERSON)?
       - Office of [Marco Jerome](PERSON)
       - Which is Professor [Pablo Aragon](PERSON)'s office?
-      - Which is the office of professor [Pablo Aragon](PERSON)? 
+      - Which is the office of professor [Pablo Aragon](PERSON)?
       - Where can I find Professor [Pablo Aragon](PERSON)?
       - Where is Professor [Pablo Aragon](PERSON)?
       - Office of [Pablo Aragon](PERSON)
+      - What's the office number of Professor [Marco Jerome](PERSON)?
+      - What's the office number of Professor [Pablo Aragon](PERSON)?
+      - What's the office number of Professor [Jorge Lobo](PERSON)?
+      - Can you tell me where [Marco Jerome](PERSON)'s office is?
+      - Can you tell me where [Pablo Aragon](PERSON)'s office is?
+      - Can you tell me where [Jorge Lobo](PERSON)'s office is?
+      - Where is the office of Professor [Marco Jerome](PERSON) located?
+      - Where is the office of Professor [Pablo Aragon](PERSON) located?
+      - Where is the office of Professor [Jorge Lobo](PERSON) located?
+      - What is the location of [Marco Jerome](PERSON)'s office?
+      - What is the location of [Pablo Aragon](PERSON)'s office?
+      - What is the location of [Jorge Lobo](PERSON)'s office?
+      - In which office can I find Professor [Marco Jerome](PERSON)?
+      - In which office can I find Professor [Pablo Aragon](PERSON)?
+      - In which office can I find Professor [Jorge Lobo](PERSON)?
   - intent: ask_professor_email
     examples: |
-      - What is [Jorge Lobo](PERSON)'s email address?
-      - Professor [Jorge Lobo](PERSON)'s email
-      - Email [Jorge Lobo](PERSON)
-      - What is [Marco Jerome](PERSON)'s email address?
-      - Professor [Marco Jerome](PERSON)'s email
-      - Email [Marco Jerome](PERSON)
-      - What is [Pablo Aragon](PERSON)'s email address?
-      - Professor [Pablo Aragon](PERSON)'s email
-      - Email [Pablo Aragon](PERSON)
+      - What is the email address of Professor [Marco Jerome](PERSON)?
+      - Can you tell me the email of Professor [Marco Jerome](PERSON)?
+      - How can I contact Professor [Marco Jerome](PERSON) via email?
+      - What's the email for Professor [Marco Jerome](PERSON)?
+      - How do I reach Professor [Marco Jerome](PERSON) through email?
+      - What is Professor [Marco Jerome](PERSON)'s email ID?
+      - [Marco Jerome](PERSON)'s email address, please
+      - What is the email of [Marco Jerome](PERSON)?
+      - Can you give me the email for [Marco Jerome](PERSON)?
+      - I need the email of Professor [Marco Jerome](PERSON)
+      - Please share Professor [Marco Jerome](PERSON)'s email address
+      - How do I email Professor [Marco Jerome](PERSON)?
+      - What's the contact email for [Marco Jerome](PERSON)?
+      - Can you provide the email of Professor [Marco Jerome](PERSON)?
+      - What is the email contact for Professor [Marco Jerome](PERSON)?
+      - What is the email address of Professor [Pablo Aragon](PERSON)?
+      - Can you tell me the email of Professor [Pablo Aragon](PERSON)?
+      - How can I contact Professor [Pablo Aragon](PERSON) via email?
+      - What's the email for Professor [Pablo Aragon](PERSON)?
+      - How do I reach Professor [Pablo Aragon](PERSON) through email?
+      - What is Professor [Pablo Aragon](PERSON)'s email ID?
+      - [Pablo Aragon](PERSON)'s email address, please
+      - What is the email of [Pablo Aragon](PERSON)?
+      - Can you give me the email for [Pablo Aragon](PERSON)?
+      - I need the email of Professor [Pablo Aragon](PERSON)
+      - Please share Professor [Pablo Aragon](PERSON)'s email address
+      - How do I email Professor [Pablo Aragon](PERSON)?
+      - What's the contact email for [Pablo Aragon](PERSON)?
+      - Can you provide the email of Professor [Pablo Aragon](PERSON)?
+      - What is the email contact for Professor [Pablo Aragon](PERSON)?
+      - What is the email address of Professor [Jorge Lobo](PERSON)?
+      - Can you tell me the email of Professor [Jorge Lobo](PERSON)?
+      - How can I contact Professor [Jorge Lobo](PERSON) via email?
+      - What's the email for Professor [Jorge Lobo](PERSON)?
+      - How do I reach Professor [Jorge Lobo](PERSON) through email?
+      - What is Professor [Jorge Lobo](PERSON)'s email ID?
+      - [Jorge Lobo](PERSON)'s email address, please
+      - What is the email of [Jorge Lobo](PERSON)?
+      - Can you give me the email for [Jorge Lobo](PERSON)?
+      - I need the email of Professor [Jorge Lobo](PERSON)
+      - Please share Professor [Jorge Lobo](PERSON)'s email address
+      - How do I email Professor [Jorge Lobo](PERSON)?
+      - What's the contact email for [Jorge Lobo](PERSON)?
+      - Can you provide the email of Professor [Jorge Lobo](PERSON)?
+      - What is the email contact for Professor [Jorge Lobo](PERSON)?
+  - intent: ask_same_professor_email
+    examples: |
+      - And how about his email?
+      - And his email?
+      - His email?
+      - What is his email?
+      - Which email?
+      - And how about her email?
+      - And her email?
+      - Her email?
+      - What is her email?
+  - intent: ask_same_professor_office
+    examples: |
+      - And how about his office?
+      - And his office?
+      - His office?
+      - What is his office?
+      - Which office?
+      - And how about her office?
+      - And her office?
+      - Her office?
+      - What is her office?
+  - intent: ask_same_professor_group
+    examples: |
+      - And how about his group?
+      - And his group?
+      - His group?
+      - What is his group?
+      - Which group?
+      - And how about her group?
+      - And her group?
+      - Her group?
+      - What is her group?
+
+  - intent: ask_same_group_professors
+    examples: |
+      - Which teachers belong to this group?
+      - Which professor are in this group?
+      - How many professors are in this group?
+      - What professsors are in this group?
+      - Who are the teachers in this group?
+      - What instructors belong to this group?
+      - Which educators are part of this group?
+      - Which lecturers are included in this group?
+      - What professors belong to this group?
+      - Who are the faculty members in this group?
+      - How many educators are in this group?
+      - What instructors are part of this group?
+      - What professors are included in this group?
+      - Who are the academic staff in this group?
+      - Which teachers are in that group?
+  - intent: ask_other_professor_same_intent
+    examples: |
+      - And how about [Pablo Aragon](PERSON)?
+      - And [Pablo Aragon](PERSON)?
+      - And what for [Pablo Aragon](PERSON)?
+      - And which one for [Pablo Aragon](PERSON)?
+      - And how about [Marco Jerome](PERSON)?
+      - And [Marco Jerome](PERSON)?
+      - And what for [Marco Jerome](PERSON)?
+      - And which one for [Marco Jerome](PERSON)?
+      - And how about [Jorge Lobo](PERSON)?
+      - And [Jorge Lobo](PERSON)?
+      - And what for [Jorge Lobo](PERSON)?
+      - And which one for [Jorge Lobo](PERSON)?
