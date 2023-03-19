@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="./style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-70GDpaHjW8fV7wpoJMKfemG7fKNQZ8uVyydUn9tP9v7BYpIy8l/F5NwE0PDBv5h5N5D5BG/1c9XLO0c0G90Qg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
-
         <section class="msger">
             <header class="msger-header">
                 <div class="msger-header-title">
@@ -67,10 +67,12 @@
 
             <form class="msger-inputarea">
                 <input type="text" class="msger-input" placeholder="Enter your message...">
-                <button type="button" class="msger-audio-btn"><i class="fafa-microphone"></i></button>
+                <button type="button" class="msger-record-btn">Start recording</button>
                 <button type="submit" class="msger-send-btn">Send</button>
             </form>
         </section>
         <script src="./index.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg.js/3.1.9001/ffmpeg.min.js"></script>
     </body>
 </html>
