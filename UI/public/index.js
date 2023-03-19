@@ -10,7 +10,7 @@ const PERSON_NAME = "JIM";
 
 var userLang = 'en-GB';
 
-botResponse("/greet") //init
+botResponse("/welcome") //init
 
 
 msgerForm.addEventListener("submit", async event => {
