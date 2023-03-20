@@ -11,7 +11,7 @@
   ```
 - If you have custom actions, you can start the action server using the below command
     ```
-    rasa run actions --cors "*" --debug
+    rasa run actions --cors "*" --debugrasa run actions --cors "*" --debug
     ```
 - If module utils fail to import run the command below
     ```

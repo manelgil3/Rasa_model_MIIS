@@ -125,7 +125,7 @@ async function stopRecording() {
         const superBuffer = new Blob(recordedBlobs, { type: "audio/webm" });
 
         // Transcribe the recorded audio
-        const apiKey = "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"; // Replace with your OpenAI API key
+        const apiKey = "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"; // Replace with your OpenAI API key
         const transcriptionResult = await transcribeSpeech(superBuffer, apiKey);
         appendMessage(PERSON_NAME, PERSON_IMG, "right", transcriptionResult.text);
 
@@ -187,7 +187,7 @@ async function transcribeSpeech(audioBlob, OPENAI_API_KEY) {
 async function playRecordedAudio() {
     const superBuffer = new Blob(recordedBlobs, { type: "audio/wav" });
 
-    const apiKey = "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"; // Replace with your OpenAI API key
+    const apiKey = "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"; // Replace with your OpenAI API key
     const target_lang = 'en-GB';
 
     // Transcribe the recorded audio
@@ -243,7 +243,7 @@ function botResponse(msgText) {
                     console.log("Translated msg from rasa: ", data);
                     const msgBot = data.text;
                     appendMessage(BOT_NAME, BOT_IMG, "left", msgBot);
-                    speakTranslatedResponse(msgBot);
+                    speakTranslatedResponse(msgBot, userLang);
 
                 })
             //const msgBot = data[0].text;
@@ -310,17 +310,16 @@ function translateText(text, targetLang) {
         });
 }
 
-function speakTranslatedResponse(response) {
+function speakTranslatedResponse(response, userLang) {
     // Translate response to user's language
     console.log("Data into speakTranslatedResponse: ", response);
-    const translatedResponse = response;
 
     // Create a new SpeechSynthesisUtterance object
     const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(translatedResponse);
+    const utterance = new SpeechSynthesisUtterance(response);
 
     // Set the voice and language
-    const voice = synth.getVoices().find((v) => v.lang === userLang);
+    const voice = synth.getVoices().find((v) => v.lang === 'en-GB');
     console.log(voice)
     utterance.voice = voice;
 
